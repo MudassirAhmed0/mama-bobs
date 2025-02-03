@@ -19,3 +19,27 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+@layer components {
+  .myContainer {
+    @apply lg:w-[91.6666666667vw] w-[90.699%] mx-[auto];
+  }
+  .py1 {
+    @apply lg:py-[11.4583333333vw] sm:py-[120px] py-[75px];
+  }
+  .border20 {
+    @apply lg:rounded-[1.04166666667vw] rounded-[20px];
+  }
+  .text64 {
+    @apply lg:text-[3.33333333333vw] lg:leading-[3.95833333333vw] sm:text-[50px] sm:leading-[60px]
+    text-[7.44186046512vw] leading-[42px] capitalize font-[600];
+  }
+  .text24 {
+    @apply lg:text-[1.25vw] lg:leading-[1.77083333333vw];
+  }
+  .mtext18 {
+    @apply sm:text-[20px] sm:leading-[30px] text-[18px] leading-[25px];
+  }
+  .mt30 {
+    @apply lg:mt-[1.5625vw] sm:mt-[22px] mt-[16px];
+  }
+}
