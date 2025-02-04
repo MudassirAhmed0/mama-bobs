@@ -5,85 +5,76 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="flex flex-col">
-      <div className="overflow-hidden">
-        <div className="relative pb-14 flex justify-start md:justify-center md:items-end ">
-          <img
-            className="absolute object-cover top-10 h-full w-full xl:mt-10 z-0"
-            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/footer_5_marketing_background.png"
-            alt="background"
-          />
-          <div className="flex pt-36 md:pt-32 lg:pt-40 xl:pt-96   px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
-            <div className="flex  flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row">
-              <Link
-                href={"/"}
-                aria-label="Home. logo"
-                role="img"
-                className="relative lg:size-[16.6666666667vh] sm:size-[150px] size-[100px]"
-              >
-                <Image fill src="/images/icons/logo.png" alt="logo" />
-              </Link>
-              <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">
-                <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
-                  <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
-                    Community
-                  </h2>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    About Us
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    Guidelines and how to
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    Quote from the best
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    How to start a blog
-                  </button>
-                </div>
-                <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
-                  <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
-                    Getting Started
-                  </h2>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    About Us
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    Guidelines and how to
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    Quote from the best
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    How to start a blog
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    Quote from the best
-                  </button>
-                  <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                    Guidelines and how to
-                  </button>
-                </div>
-                <div className=" xl:w-72 flex justify-start items-start flex-col space-y-6">
-                  <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
-                    Resources
-                  </h2>
-                  <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
-                    Accessibility
-                  </button>
-                  <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
-                    Usability
-                  </button>
-                  <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
-                    Marketplace
-                  </button>
-                  <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
-                    Design &amp; Dev
-                  </button>
-                  <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
-                    Marketplace
-                  </button>
-                </div>
-              </div>
+      <div className="bg-black">
+        <div className="myContainer lg:py-[6.25vw] py-12 flex flex-col items-start justify-start xl:justify-between xl:space-x-8 xl:flex-row">
+          <Link
+            href={"/"}
+            aria-label="Home. logo"
+            role="img"
+            className="relative lg:size-[22.2222222222vh] sm:size-[150px] size-[100px]"
+          >
+            <Image fill src="/images/icons/logo.png" alt="logo" />
+          </Link>
+          <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">
+            <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
+              <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
+                Community
+              </h2>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                About Us
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                Guidelines and how to
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                Quote from the best
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                How to start a blog
+              </button>
+            </div>
+            <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
+              <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
+                Getting Started
+              </h2>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                About Us
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                Guidelines and how to
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                Quote from the best
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                How to start a blog
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                Quote from the best
+              </button>
+              <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                Guidelines and how to
+              </button>
+            </div>
+            <div className=" xl:w-72 flex justify-start items-start flex-col space-y-6">
+              <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
+                Resources
+              </h2>
+              <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                Accessibility
+              </button>
+              <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                Usability
+              </button>
+              <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                Marketplace
+              </button>
+              <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                Design &amp; Dev
+              </button>
+              <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                Marketplace
+              </button>
             </div>
           </div>
         </div>

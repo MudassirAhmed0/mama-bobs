@@ -1,82 +1,114 @@
-import React from "react";
+"use client";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import the Navigation module
+import { Navigation } from "swiper/modules";
+
 export default function Testimonials() {
   return (
-    <div className="relative">
-      <div className="flex items-center justify-between h-full w-full absolute z-0">
-        <div className="lg:w-4/6 w-full bg-yellow-200 absolute right-0 h-full" />
-      </div>
-      <div className="xl:px-20 px-8 py-20 2xl:mx-auto 2xl:container relative z-40">
-        <h1 className="text-5xl font-bold xl:block hidden leading-tight text-gray-800">
-          What our customers are
-          <br />
-          saying
+    <div className="overflow-hidden">
+      <div className="flex justify-center items-center flex-col py-12">
+        <h1 className="text-2xl md:text-4xl 2xl:text-5xl leading-10 text-black">
+          <span className="font-bold">Testimonials</span>
         </h1>
-        <h1 className="text-5xl font-bold xl:hidden block leading-tight lg:leading-10 text-gray-800">
-          What our customers are saying
-        </h1>
-        <div className="flex">
-          <div className="mt-14 md:flex">
-            <div className="relative lg:w-1/2 sm:w-96 xl:h-96 h-80">
-              <img
-                src="https://i.ibb.co/4g1D9cv/imgslider1.png"
-                alt="image of profile"
-                className="w-full h-full flex-shrink-0 object-fit object-cover shadow-lg rounded"
-              />
-              <div className="w-32 md:flex hidden items-center justify-center absolute top-0 -mr-16 -mt-14 right-0 h-32 bg-indigo-100 rounded-full">
-                <img
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonial-svg1.svg"
-                  alt="commas"
-                />
+        <Swiper
+          modules={[Navigation]}
+          centeredSlides={true}
+          loop={true}
+          grabCursor={true}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          slidesPerView={"auto"}
+          spaceBetween={"20"}
+          className="mt-12 md:mt-10 2xl:mt-20 swiper mySwiper"
+        >
+          {[1, 2, 3, 4].map((v, index) => (
+            <SwiperSlide key={index} className="swiper-slide !w-1/2">
+              <div className="flex justify-center items-center flex-col">
+                <div className="w-12 relative z-20">
+                  <img src="/images/home/testimonials/slide.svg" alt="apple" />
+                </div>
+                <div className="-mt-6 flex border h-18 rounded text-left text-black border-black bg-white justify-between items-start flex-col px-4 md:px-6">
+                  <p className="mt-10 text-base leading-normal ">
+                    {index} It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters.
+                  </p>
+                  <div className="flex justify-end pb-6 space-y-11 items-end w-full flex-col h-28">
+                    <div className="flex grow-0 w-6">
+                      <img
+                        src="/images/home/testimonials/quote.svg"
+                        alt="quotes"
+                      />
+                    </div>
+                    <div className="w-full flex justify-start items-center space-x-2">
+                      <div>
+                        <img
+                          src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonials_7_Ellipse%20113.png"
+                          alt="woman avatar"
+                        />
+                      </div>
+                      <div className="flex justify-start items-start flex-col space-y-2">
+                        <p className="text-lg font-medium leading-none">
+                          Casy Camilari
+                        </p>
+                        <p className="text-sm leading-none">
+                          Digital Marketing Director
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="md:w-1/3 lg:w-1/3 xl:ml-32 md:ml-20 md:mt-0 mt-4 flex flex-col justify-between">
-              <div>
-                <h1 className="text-2xl font-semibold xl:leading-loose text-gray-800">
-                  Some of the best work that was done!
-                </h1>
-                <p className="text-base font-medium leading-6 mt-4 text-gray-600">
-                  Our core values are at the heart of all that we do. They are
-                  integrated into our daily work lives and help us to remember
-                  our customers always comes first, the last thank you should
-                  always comes from us.
-                </p>
-              </div>
-              <div className="md:mt-0 mt-8">
-                <p className="text-base font-medium leading-4 text-gray-800">
-                  Anna Smith
-                </p>
-                <p className="text-base leading-4 mt-2 mb-4 text-gray-600">
-                  Senior Web Designer
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        <div className="flex items-center mt-8">
-          <div
-            className="cursor-pointer "
-            role="button"
-            aria-label="previous slide"
-          >
+        {/* Navigation buttons */}
+        <div className="flex justify-center mt-20 items-center space-x-6 w-full">
+          <button className="rounded-full p-1.5 flex justify-center items-center bg-black swiper-button-prev w-1.5 h-2.5">
             <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonal-svg2.svg"
-              alt="previous"
+              className="w-6 h-6 scale-x-[-1]"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonials_7_svg-6_next.svg"
+              alt="prev"
             />
-          </div>
-
-          <div
-            role="button"
-            aria-label="next slide"
-            className="cursor-pointer ml-2"
-          >
+          </button>
+          <button className="rounded-full p-1.5 flex justify-center items-center bg-black swiper-button-next w-1.5 h-2.5">
             <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonial-svg3.svg"
+              className="w-6 h-6"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonials_7_svg-6_next.svg"
               alt="next"
             />
-          </div>
+          </button>
         </div>
       </div>
+
+      <style>
+        {`
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            content: "";
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: relative;
+            right: 0;
+            height: 30px;
+            width: 30px;
+        }
+            .swiper-button-next, .swiper-button-prev {
+  z-index: 10;  
+}
+  .swiper-button-lock{
+  display:block
+  }
+        `}
+      </style>
     </div>
   );
 }

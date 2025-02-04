@@ -9,10 +9,10 @@ export default function About() {
       <img
         src="/images/home/about/surfboard.png"
         alt="surfboard"
-        className="absolute bottom-[-5%] right-0 w-[45vw] scale-x-[-1]"
+        className="absolute bottom-0 right-0 w-[40vw] sm:w-[30vw] lg:w-[20vw] scale-x-[-1]"
       />
-      <div className="border20 relative z-[2] myContainer bg-black bg-opacity-[0.7] lg:p-[4.16666666667vw] sm:p-[40px] p-[30px] flex flex-wrap lg:gap-[2.5vw] sm:gap-[30px] gap-[20px]">
-        <div className="border20 overflow-hidden lg:w-[36.4583333333vw] lg:h-[70vh] lg:mt-[-11vw]">
+      <div className="border20 relative z-[2] myContainer bg-black bg-opacity-[0.7] lg:p-[4.16666666667vw] sm:p-[40px] sm:py-[60px] py-[50px] p-[30px] flex flex-wrap lg:gap-[2.5vw] sm:gap-[30px] gap-[20px]">
+        <div className="border20 overflow-hidden lg:w-[36.4583333333vw] lg:h-[70vh] sm:h-[400px] h-[300px] lg:mt-[-11vw]">
           <img
             src="/images/home/about/about.jpg"
             alt="about"
