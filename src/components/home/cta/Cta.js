@@ -2,7 +2,7 @@ import React from "react";
 
 const Cta = () => {
   return (
-    <div className="myContainer md:py-12 py-9">
+    <div data-aos="fade" className="myContainer md:py-12 py-9">
       <div className="relative flex flex-row justify-between items-center bg-black sm:rounded-r-full">
         <div className="-mt-12 sm:-mt-0 w-8/12 sm:w-6/12 ml-6 md:ml-12 flex-col flex justify-start items-start">
           <div>

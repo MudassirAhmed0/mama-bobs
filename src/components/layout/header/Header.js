@@ -1,4 +1,5 @@
 "use client";
+import useAos from "@/hooks/useAos";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -25,6 +26,7 @@ const navLinks = [
   },
 ];
 const Header = () => {
+  useAos();
   const [show, setShow] = useState(false);
   return (
     <header className="absolute z-10 top-0 left-0 w-full">
@@ -69,7 +71,7 @@ const Header = () => {
             >
               <button
                 onClick={() => setShow(!show)}
-                className={`block md:hidden lg:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 fixed focus:outline-none focus:ring-2 focus:ring-gray-500 z-30 top-0 mt-6`}
+                className={`block md:hidden lg:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 fixed focus:outline-none focus:ring-2 focus:ring-gray-500 z-30 top-0 mt-6 right-6`}
               >
                 <svg
                   aria-label="close main menu"

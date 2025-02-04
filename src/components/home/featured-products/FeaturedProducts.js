@@ -4,12 +4,18 @@ const FeaturedProducts = () => {
   return (
     <div className="2xl:mx-auto 2xl:container">
       <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8">
-        <h1 className="lg:text-4xl text-3xl font-semibold text-black text-center">
+        <h1
+          data-aos="fade-up"
+          className="lg:text-4xl text-3xl font-semibold text-black text-center"
+        >
           Quality Apparel with an Attitude
         </h1>
         <div className="flex justify-center">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 lg:mt-16 md:mt-12 mt-8 items-center">
-            <div className="relative flex flex-col group overflow-hidden">
+            <div
+              data-aos="fade-up"
+              className="relative flex flex-col group overflow-hidden"
+            >
               <img
                 src="https://i.ibb.co/b50f24j/carosel-1.png"
                 alt="two girls"
@@ -30,7 +36,11 @@ const FeaturedProducts = () => {
                 </p>
               </div>
             </div>
-            <div className="relative flex flex-col group overflow-hidden">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="relative flex flex-col group overflow-hidden"
+            >
               <img
                 src="https://i.ibb.co/cvN3gMZ/carousel-2.png"
                 alt="black guy"
@@ -50,7 +60,11 @@ const FeaturedProducts = () => {
                 </p>
               </div>
             </div>
-            <div className="relative flex flex-col group overflow-hidden">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="relative flex flex-col group overflow-hidden"
+            >
               <img
                 src="https://i.ibb.co/4JJnHpc/carousel-3.png"
                 alt="black guy"

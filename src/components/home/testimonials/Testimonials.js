@@ -9,10 +9,14 @@ export default function Testimonials() {
   return (
     <div className="overflow-hidden">
       <div className="flex justify-center items-center flex-col py-12">
-        <h1 className="text-2xl md:text-4xl 2xl:text-5xl leading-10 text-black">
+        <h1
+          data-aos="fade-up"
+          className="text-2xl md:text-4xl 2xl:text-5xl leading-10 text-black"
+        >
           <span className="font-bold">Testimonials</span>
         </h1>
         <Swiper
+          data-aos="fade"
           modules={[Navigation]}
           centeredSlides={true}
           loop={true}
@@ -69,7 +73,10 @@ export default function Testimonials() {
         </Swiper>
 
         {/* Navigation buttons */}
-        <div className="flex justify-center mt-20 items-center space-x-6 w-full">
+        <div
+          data-aos="fade"
+          className="flex justify-center mt-20 items-center space-x-6 w-full"
+        >
           <button className="rounded-full p-1.5 flex justify-center items-center bg-black swiper-button-prev w-1.5 h-2.5">
             <img
               className="w-6 h-6 scale-x-[-1]"

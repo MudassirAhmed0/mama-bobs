@@ -38,12 +38,15 @@ export default function Values() {
       <div className="max-w-8xl mx-auto container py-16 relative z-[2]">
         <div>
           <div className="flex items-left flex-col px-4">
-            <a href="/">
+            <a data-aos="fade-up" href="/">
               <h2 className="text-4xl lg:text-5xl font-extrabold text-left leading-tight lg:w-7/12 md:w-9/12 pt-4">
                 What We Stand For
               </h2>
             </a>
-            <p className="text-md text-left mt-14  leading-normal lg:w-7/12 md:w-9/12">
+            <p
+              data-aos="fade-up"
+              className="text-md text-left mt-14  leading-normal lg:w-7/12 md:w-9/12"
+            >
               Convallis turpis erat tempus, viverra aliquet. Nullam viverra nam
               auctor sit ipsum malesuada a, duis volutpat. Convallis turpis erat
               tempus, viverra aliquet.
@@ -52,6 +55,8 @@ export default function Values() {
           <div className="mt-20 flex gap-12 flex-wrap justify-between px-4">
             {brandValues.map((brandValue, index) => (
               <div
+                data-aos="fade"
+                data-aos-delay={`${index * 100}`}
                 key={index}
                 className="flex sm:w-full md:w-5/12 items-start gap-4"
               >
