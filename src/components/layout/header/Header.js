@@ -103,7 +103,7 @@ const Header = () => {
             </div>
           </div>
           <button className="lg:text-lg lg:font-bold hidden md:block bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded px-4 sm:px-4 lg:py-[0.625vw] py-1 sm:py-3 sm:text-sm">
-            Sign In
+            Shop now
           </button>
         </div>
       </nav>
