@@ -90,15 +90,21 @@ const Header = () => {
                   <line x1={6} y1={6} x2={18} y2={18} />
                 </svg>
               </button>
-              <ul className="flex text-3xl md:text-base lg:text-[1.25vw] items-center py-10 lg:py-0 md:flex gap-6 flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
+              <ul className="flex text-3xl md:text-base lg:text-[1.25vw] items-center p-10 lg:p-0 md:flex gap-6 flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
                 {navLinks.map((navLinks, index) => (
                   <li
                     key={index}
-                    className="text-black hover:text-[#ca8a04] cursor-pointer pt-10 md:pt-0 capitalize font-medium"
+                    className="text-black hover:text-[#ca8a04] cursor-pointer capitalize font-medium"
                   >
                     <Link href="/">{navLinks.link}</Link>
                   </li>
                 ))}
+                <Link
+                  href={"/shop"}
+                  className="w-full text-center lg:font-bold md:hidden block bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded px-4 py-3 text-2xl"
+                >
+                  Shop now
+                </Link>
               </ul>
             </div>
           </div>
