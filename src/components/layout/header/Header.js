@@ -1,8 +1,10 @@
 "use client";
 import useAos from "@/hooks/useAos";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const navLinks = [
   {
     link: "about",
@@ -26,6 +28,22 @@ const navLinks = [
   },
 ];
 const Header = () => {
+  useEffect(() => {
+    // Initialize Lenis
+    const lenis = new Lenis({
+      wrapper: document.querySelector("main"),
+      infinite: true,
+    });
+
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
   useAos();
   const [show, setShow] = useState(false);
   return (
