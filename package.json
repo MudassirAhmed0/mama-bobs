@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "fabric": "^6.6.1",
+    "fabricjs-react": "^1.2.2",
     "lenis": "^1.1.20",
     "lucide-react": "^0.474.0",
     "next": "15.1.6",

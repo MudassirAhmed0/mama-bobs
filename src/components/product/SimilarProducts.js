@@ -1,27 +1,13 @@
-"use client";
-import { useState } from "react";
-import { ShoppingCart } from "lucide-react";
+import { products } from "@/utils/products";
 import Image from "next/image";
 import Link from "next/link";
-import { products } from "@/utils/products";
+import React from "react";
 
-export default function ShopPage() {
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    setCart([...cart, product]);
-  };
-
+const SimilarProducts = () => {
   return (
     <section className="min-h-screen bg-white text-black py1 pt-[220px] myContainer">
       <div className="flex justify-between items-center border-b border-gray-700 pb-4">
-        <h1 className="text-2xl font-bold">Minimalist Shop</h1>
-        <Link
-          href={"/cart"}
-          className="flex items-center gap-2 border border-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
-        >
-          <ShoppingCart size={20} /> Cart ({cart.length})
-        </Link>
+        <h1 className="text-2xl font-bold">Similar Products</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
@@ -48,7 +34,7 @@ export default function ShopPage() {
             </Link>
             <button
               className="mt-4 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
-              onClick={() => addToCart(product)}
+              //   onClick={() => addToCart(product)}
             >
               Add to Cart
             </button>
@@ -57,4 +43,6 @@ export default function ShopPage() {
       </div>
     </section>
   );
-}
+};
+
+export default SimilarProducts;

@@ -2,29 +2,26 @@
 import useAos from "@/hooks/useAos";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
+import { Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 const navLinks = [
   {
-    link: "about",
-    title: "/",
+    title: "Feature Products",
+    link: "/shop",
   },
   {
-    link: "service",
-    title: "/",
+    title: "Design your Tee",
+    link: "/design-your-tee",
   },
   {
-    link: "Feature",
-    title: "/",
+    title: "Faqs",
+    link: "/faqs",
   },
   {
-    link: "cta",
-    title: "/",
-  },
-  {
-    link: "Feature",
-    title: "/",
+    title: "About Us",
+    link: "/about-us",
   },
 ];
 const Header = () => {
@@ -109,12 +106,12 @@ const Header = () => {
                 </svg>
               </button>
               <ul className="flex text-3xl md:text-base lg:text-[1.25vw] items-center p-10 lg:p-0 md:flex gap-6 flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
-                {navLinks.map((navLinks, index) => (
+                {navLinks.map((navLink, index) => (
                   <li
                     key={index}
                     className="text-black hover:text-[#ca8a04] cursor-pointer capitalize font-medium"
                   >
-                    <Link href="/">{navLinks.link}</Link>
+                    <Link href={navLink.link}>{navLink.title}</Link>
                   </li>
                 ))}
                 <Link
@@ -126,12 +123,31 @@ const Header = () => {
               </ul>
             </div>
           </div>
-          <Link
+          {/* <Link
             href={"/shop"}
             className="lg:text-lg lg:font-bold hidden md:block bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded px-4 sm:px-4 lg:py-[0.625vw] py-1 sm:py-3 sm:text-sm"
           >
             Shop now
-          </Link>
+          </Link> */}
+
+          <div className="flex gap-x-4 items-center">
+            <Link
+              href={"/cart"}
+              className="flex items-center gap-2 border border-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
+            >
+              <Search size={20} /> Search
+            </Link>
+            <Link
+              href={"/cart"}
+              className="flex items-center gap-2 border border-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
+            >
+              <ShoppingCart size={20} /> Cart
+              {/* items in cart  number with red dot as usual in ecommerce */}
+              <span className="bg-red-500 text-white text-xs px-1 rounded-full">
+                0
+              </span>
+            </Link>
+          </div>
         </div>
       </nav>
     </header>

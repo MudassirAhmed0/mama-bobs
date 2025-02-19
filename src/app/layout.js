@@ -3,6 +3,7 @@ import "./globals.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import Layout from "@/components/layout/Index";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

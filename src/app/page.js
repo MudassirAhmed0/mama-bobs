@@ -4,9 +4,9 @@ import React from "react";
 
 const page = () => {
   return (
-    <Layout>
-      <HomePage />
-    </Layout>
+    // <Layout>
+    <HomePage />
+    // </Layout>
   );
 };
 
