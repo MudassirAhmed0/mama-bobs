@@ -2,11 +2,15 @@
 import { useRef, useEffect, useState } from "react";
 
 const ApparelDesignTool = () => {
+  const [canvasImage, setCanvasImage] = useState(
+    "https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
+  );
+
   useEffect(() => {
     // Function to initialize the canvas
     const initCanvas = () => {
       const canvas = new fabric.Canvas("canvas", {
-        width: (window.innerWidth / 100) * 13,
+        width: (window.innerWidth / 100) * 15.5,
         height: (window.innerWidth / 100) * 17,
       });
 
@@ -57,32 +61,46 @@ const ApparelDesignTool = () => {
       document.body.removeChild(script);
     };
   }, []);
+
+  const handleActiveShirt = (e) => {
+    setCanvasImage(e.target.src);
+    document.querySelectorAll(".canvasImageVariants").forEach((item) => {
+      if (item == e.target) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+  };
   return (
     <>
       <div className=" flex justify-between w-[95%] mx-auto mt-[10vw]">
         <div className="min-w-[17vw] w-[17vw] h-[37vw] border-[1px] border-[#efefef] relative flex flex-col items-center">
           <img
+            onClick={handleActiveShirt}
             src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
             alt="Tshirt"
-            className="p-[2.5%] m-[2.5%] border-[1px] border-[#dedede] w-[90%] h-[45%] object-cover"
+            className="p-[2.5%] m-[2.5%] canvasImageVariants  w-[90%] h-[45%] object-cover active"
           />
           <img
+            onClick={handleActiveShirt}
             src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/cbeuxcz6mmj4zhijvnnh.png"
             alt="Tshirt"
-            className="p-[2.5%] m-[2.5%] w-[90%] h-[45%] object-cover "
+            className="p-[2.5%] m-[2.5%] w-[90%] h-[45%] object-cover canvasImageVariants "
           />
         </div>
-        <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] relative bg-[#f5f5f5] flex flex-col items-center justify-center">
+        <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] relative bg-[#fff] flex flex-col items-center justify-center">
           <img
-            src="https://lh3.googleusercontent.com/proxy/skOcRbxP2x01VnvqBBtY_bTWBD6P9DLgKYSGR0qLJBCrMMDF-S-Eu1Zzyk7u0bDaPq9clRcHcpdkvsBkn1uPg_jO4rwY5VvmeyCEvFD0uVftZKRoi1VUjgrr_ni0WNvr6_Gew82iCIsQ1RCLqka2-9CVtBiAyPVnRCLDkcWILVgtqm_sJAnAmTRrCLBq"
+            src={canvasImage}
             alt="Tshirt"
-            className="size-[80%] object-contain"
+            className="size-[100%] object-contain"
           />
           <div
             id="canvas-container"
-            className="absolute top-[11vw] left-[8.4vw]"
+            className="absolute top-[11vw] left-[14.5vw]"
           >
             <canvas id="canvas" />
+            <span className="absolute pointer-events-none  border-[#efefef] size-full border top-0"></span>
           </div>
         </div>
         <div className="controls min-w-[30vw] w-[30vw]">
@@ -110,14 +128,23 @@ const ApparelDesignTool = () => {
               />
             </div>
           </div>
+          <div className="flex gap-4 items-center mt-6">
+            <button className=" bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded  lg:max-w-[411px] w-full  py-3">
+              Preview
+            </button>
+            <button className=" bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded  lg:max-w-[411px] w-full  py-3">
+              Buy it Now
+            </button>
+          </div>
         </div>
       </div>
       <style>
         {`  
-
+.canvasImageVariants.active{
+border: 1px solid #dedede
+}
      #canvas-container {
-       width: 13 vw;
-       border: 1px solid #ccc;
+       width: 15.5vw; 
      }
 
      .controls {
