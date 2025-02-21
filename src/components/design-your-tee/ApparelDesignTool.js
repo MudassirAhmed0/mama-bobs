@@ -1,187 +1,313 @@
 "use client";
+import { Trash } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
+
+const designOptions = [
+  {
+    type: "graphic",
+    src: "/images/icons/logo.png",
+    alt: "Design 1",
+  },
+  {
+    type: "graphic",
+    src: "https://img.freepik.com/free-vector/life-is-art-paint-your-dreams-typography-design-illustration_53876-8565.jpg",
+    alt: "Design 2",
+  },
+];
 
 const ApparelDesignTool = () => {
   const [canvasImage, setCanvasImage] = useState(
     "https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
   );
+  const [previewImage, setPreviewImage] = useState(null);
+  const [selectedObject, setSelectedObject] = useState(null);
+  const [currentCanvasType, setCurrentCanvasType] = useState("front");
+
+  const canvasFrontRef = useRef(null);
+  const canvasBackRef = useRef(null);
 
   useEffect(() => {
-    // Function to initialize the canvas
-    const initCanvas = () => {
-      const canvas = new fabric.Canvas("canvas", {
+    const initCanvas = (canvasId, canvasRef) => {
+      const canvas = new fabric.Canvas(canvasId, {
         width: (window.innerWidth / 100) * 15.5,
         height: (window.innerWidth / 100) * 17,
       });
+      canvasRef.current = canvas;
 
-      // Design Selection Handlers
-      const designOptions = document.querySelectorAll(".design-option");
-      const handleClick = (event) => {
-        const type = event.currentTarget.dataset.type;
-        if (type === "graphic") {
-          addGraphic(event.currentTarget.dataset.src);
-        }
-      };
+      canvas.on("selection:created", (e) => {
+        setSelectedObject(e.target);
+      });
 
-      designOptions.forEach((option) =>
-        option.addEventListener("click", handleClick)
-      );
+      canvas.on("selection:updated", (e) => {
+        setSelectedObject(e.target);
+      });
 
-      // Add Graphic Function
-      function addGraphic(src) {
-        fabric.Image.fromURL(src, (img) => {
-          img.set({
-            left: 0,
-            top: 0,
-            scaleX: 0.2,
-            scaleY: 0.2,
-            hasControls: true,
-          });
-          canvas.add(img);
-        });
-      }
+      canvas.on("selection:cleared", () => {
+        setSelectedObject(null);
+      });
 
-      return () => {
-        // Cleanup event listeners when component unmounts
-        designOptions.forEach((option) =>
-          option.removeEventListener("click", handleClick)
-        );
-        canvas.dispose();
-      };
+      return () => canvas.dispose();
     };
 
-    // Dynamically load Fabric.js
+    const initCanvases = () => {
+      initCanvas("canvasFront", canvasFrontRef);
+      initCanvas("canvasBack", canvasBackRef);
+    };
+
     const script = document.createElement("script");
     script.src =
       "https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js";
-    script.onload = initCanvas;
+    script.onload = initCanvases;
     document.body.appendChild(script);
 
     return () => {
       document.body.removeChild(script);
+      [canvasFrontRef.current, canvasBackRef.current].forEach((canvas) => {
+        if (canvas) canvas.dispose();
+      });
     };
   }, []);
 
-  const handleActiveShirt = (e) => {
-    setCanvasImage(e.target.src);
-    document.querySelectorAll(".canvasImageVariants").forEach((item) => {
-      if (item == e.target) {
-        item.classList.add("active");
+  useEffect(() => {
+    const handleResize = () => {
+      [canvasFrontRef.current, canvasBackRef.current].forEach((canvas) => {
+        if (canvas) {
+          canvas.setDimensions({
+            width: (window.innerWidth / 100) * 15.5,
+            height: (window.innerWidth / 100) * 17,
+          });
+        }
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isFirstRenderRef = useRef(true);
+  useEffect(() => {
+    const applyCanvasStyles = () => {
+      if (currentCanvasType === "front") {
+        document.getElementById("canvasFront").parentElement.style.zIndex = "2";
+
+        const lowerCanvasesFront = document
+          .getElementById("canvasFront")
+          ?.parentElement.querySelectorAll("canvas");
+
+        lowerCanvasesFront?.forEach((lowerCanvasFront) => {
+          lowerCanvasFront.style.pointerEvents = "auto";
+          lowerCanvasFront.style.opacity = "1";
+        });
+
+        const lowerCanvasesBack = document
+          .getElementById("canvasBack")
+          ?.parentElement.querySelectorAll("canvas");
+
+        lowerCanvasesBack?.forEach((lowerCanvasBack) => {
+          lowerCanvasBack.style.pointerEvents = "none";
+          lowerCanvasBack.style.opacity = "0";
+        });
       } else {
-        item.classList.remove("active");
+        document.getElementById("canvasBack").parentElement.style.zIndex = "2";
+        const lowerCanvasesBack = document
+          .getElementById("canvasBack")
+          ?.parentElement.querySelectorAll("canvas");
+
+        lowerCanvasesBack?.forEach((lowerCanvasBack) => {
+          lowerCanvasBack.style.pointerEvents = "auto";
+          lowerCanvasBack.style.opacity = "1";
+        });
+
+        const lowerCanvasesFront = document
+          .getElementById("canvasFront")
+          ?.parentElement.querySelectorAll("canvas");
+
+        lowerCanvasesFront?.forEach((lowerCanvasFront) => {
+          lowerCanvasFront.style.pointerEvents = "none";
+          lowerCanvasFront.style.opacity = "0";
+        });
       }
+    };
+
+    if (isFirstRenderRef.current) {
+      const timeout = setTimeout(() => {
+        applyCanvasStyles();
+        const backCanvasContainer =
+          document.getElementById("canvasBack")?.parentElement;
+        backCanvasContainer.style.position = "absolute";
+        backCanvasContainer.style.top = "0";
+        backCanvasContainer.style.left = "0";
+        isFirstRenderRef.current = false; // Mark as not first render
+      }, 1000);
+
+      return () => clearTimeout(timeout); // Cleanup timeout on unmount
+    } else {
+      applyCanvasStyles(); // Run immediately on subsequent renders
+    }
+  }, [currentCanvasType]);
+
+  const handleActiveShirt = (e) => {
+    const type = e.target.dataset.type;
+    setCanvasImage(e.target.src);
+    setCurrentCanvasType(type);
+    setSelectedObject(null);
+  };
+
+  const handleAddGraphic = (src) => {
+    const canvas =
+      currentCanvasType === "front"
+        ? canvasFrontRef.current
+        : canvasBackRef.current;
+    if (!canvas) return;
+
+    fabric.Image.fromURL(src, (img) => {
+      img.set({
+        left: canvas.width / 2,
+        top: canvas.height / 2,
+        originX: "center",
+        originY: "center",
+        scaleX: 0.2,
+        scaleY: 0.2,
+        hasControls: true,
+      });
+      canvas.add(img);
+      canvas.setActiveObject(img);
+      canvas.requestRenderAll();
     });
   };
+
+  const handlePreview = () => {
+    const canvas =
+      currentCanvasType === "front"
+        ? canvasFrontRef.current
+        : canvasBackRef.current;
+    if (canvas) {
+      setPreviewImage(canvas.toDataURL({ format: "png", quality: 1 }));
+    }
+  };
+
+  const handleDelete = () => {
+    const canvas =
+      currentCanvasType === "front"
+        ? canvasFrontRef.current
+        : canvasBackRef.current;
+    if (canvas && selectedObject) {
+      canvas.remove(selectedObject);
+      setSelectedObject(null);
+      canvas.discardActiveObject().requestRenderAll();
+    }
+  };
+
   return (
-    <>
-      <div className=" flex justify-between w-[95%] mx-auto mt-[10vw]">
-        <div className="min-w-[17vw] w-[17vw] h-[37vw] border-[1px] border-[#efefef] relative flex flex-col items-center">
-          <img
-            onClick={handleActiveShirt}
-            src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
-            alt="Tshirt"
-            className="p-[2.5%] m-[2.5%] canvasImageVariants  w-[90%] h-[45%] object-cover active"
-          />
-          <img
-            onClick={handleActiveShirt}
-            src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/cbeuxcz6mmj4zhijvnnh.png"
-            alt="Tshirt"
-            className="p-[2.5%] m-[2.5%] w-[90%] h-[45%] object-cover canvasImageVariants "
-          />
-        </div>
-        <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] relative bg-[#fff] flex flex-col items-center justify-center">
-          <img
-            src={canvasImage}
-            alt="Tshirt"
-            className="size-[100%] object-contain"
-          />
-          <div
-            id="canvas-container"
-            className="absolute top-[11vw] left-[14.5vw]"
+    <div className="flex justify-between w-[95%] mx-auto mt-[10vw]">
+      {/* Shirt Views */}
+      <div className="min-w-[17vw] w-[17vw] h-[37vw] border-[1px] border-[#efefef] flex flex-col items-center">
+        <img
+          onClick={handleActiveShirt}
+          data-type="front"
+          src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
+          alt="Front"
+          className={`p-[2.5%] m-[2.5%] w-[90%] h-[45%] object-cover cursor-pointer ${
+            currentCanvasType === "front"
+              ? "active border-[1px] border-[#dedede]"
+              : ""
+          }`}
+        />
+        <img
+          onClick={handleActiveShirt}
+          data-type="back"
+          src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/cbeuxcz6mmj4zhijvnnh.png"
+          alt="Back"
+          className={`p-[2.5%] m-[2.5%] w-[90%] h-[45%] object-cover cursor-pointer ${
+            currentCanvasType === "back"
+              ? "active border-[1px] border-[#dedede]"
+              : ""
+          }`}
+        />
+      </div>
+
+      {/* Design Canvas */}
+      <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] bg-white relative">
+        {selectedObject && (
+          <button
+            onClick={handleDelete}
+            className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full"
           >
-            <canvas id="canvas" />
-            <span className="absolute pointer-events-none  border-[#efefef] size-full border top-0"></span>
-          </div>
-        </div>
-        <div className="controls min-w-[30vw] w-[30vw]">
-          <div className="design-palette" id="design-palette">
-            <div
-              className="design-option"
-              data-type="graphic"
-              data-src="https://img.freepik.com/free-vector/t-shirt-poster-design-with-illustraion-skeleton-professor_1284-36769.jpg?t=st=1738784270~exp=1738787870~hmac=c92ec44d8dce839e048ffa72c9c3cb54bf231287e41529f85627b86123440f13&w=826"
-            >
-              <img
-                src="https://img.freepik.com/free-vector/t-shirt-poster-design-with-illustraion-skeleton-professor_1284-36769.jpg?t=st=1738784270~exp=1738787870~hmac=c92ec44d8dce839e048ffa72c9c3cb54bf231287e41529f85627b86123440f13&w=826"
-                alt="Design 1"
-                width={200}
+            <Trash size={16} />
+          </button>
+        )}
+
+        <img
+          src={canvasImage}
+          alt="Tshirt"
+          className="w-full h-full object-contain"
+        />
+
+        <div
+          id="canvas-container"
+          className="absolute top-[11vw] left-[14.5vw]"
+        >
+          {previewImage ? (
+            <img src={previewImage} alt="Preview" className="w-full h-full" />
+          ) : (
+            <>
+              <canvas
+                id="canvasFront"
+                ref={canvasFrontRef}
+                className={`absolute  `}
               />
-            </div>
-            <div
-              className="design-option"
-              data-type="graphic"
-              data-src="https://img.freepik.com/free-vector/life-is-art-paint-your-dreams-typography-design-illustration_53876-8565.jpg?t=st=1738784457~exp=1738788057~hmac=144241d195369b3ab7f138927ea6f5859e72d7264258f319cca3811590ef6792&w=826"
-            >
-              <img
-                src="https://img.freepik.com/free-vector/life-is-art-paint-your-dreams-typography-design-illustration_53876-8565.jpg?t=st=1738784457~exp=1738788057~hmac=144241d195369b3ab7f138927ea6f5859e72d7264258f319cca3811590ef6792&w=826"
-                alt="Design 2"
-                width={200}
+              <canvas
+                id="canvasBack"
+                ref={canvasBackRef}
+                className={`absolute  `}
               />
-            </div>
-          </div>
-          <div className="flex gap-4 items-center mt-6">
-            <button className=" bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded  lg:max-w-[411px] w-full  py-3">
-              Preview
-            </button>
-            <button className=" bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded  lg:max-w-[411px] w-full  py-3">
-              Buy it Now
-            </button>
-          </div>
+              <span className="absolute inset-0 border-[#efefef] border pointer-events-none" />
+            </>
+          )}
         </div>
       </div>
-      <style>
-        {`  
-.canvasImageVariants.active{
-border: 1px solid #dedede
-}
-     #canvas-container {
-       width: 15.5vw; 
-     }
 
-     .controls {
-       padding: 15px;
-       background: #f5f5f5;
-     }
+      {/* Design Controls */}
+      <div className="min-w-[30vw] w-[30vw] p-4 bg-[#f5f5f5]">
+        <div className="design-palette grid grid-cols-3 gap-2 mb-5">
+          {designOptions.map((option) => (
+            <div
+              key={option.src}
+              className="design-option cursor-pointer p-1 border-2 border-transparent hover:border-blue-500"
+              onClick={() => handleAddGraphic(option.src)}
+            >
+              <img
+                src={option.src}
+                alt={option.alt}
+                className="w-full h-auto"
+              />
+            </div>
+          ))}
+        </div>
 
-     .design-palette {
-       display: grid;
-       grid-template-columns: repeat(3, 1fr);
-       gap: 10px;
-       margin-bottom: 20px;
-     }
+        <div className="flex gap-4">
+          <button
+            onClick={handlePreview}
+            className="bg-[#a16207] hover:bg-[#ca8a04] text-white rounded w-full py-3 transition-colors"
+          >
+            Preview
+          </button>
+          <button className="bg-[#a16207] hover:bg-[#ca8a04] text-white rounded w-full py-3 transition-colors">
+            Buy Now
+          </button>
+        </div>
+      </div>
 
-     .design-option {
-       cursor: pointer;
-       border: 2px solid transparent;
-       padding: 5px;
-     }
-
-     .design-option:hover {
-       border-color: #007bff;
-     }
-
-     .adjustment-controls {
-       margin-top: 20px;
-     }
-
-     .control-group {
-       margin-bottom: 15px;
-     }
-
-     input[type="range"] {
-       width: 100%;
-     }`}
-      </style>
-    </>
+      <style jsx>{`
+        .active {
+          border: 1px solid #dedede;
+        }
+        #canvas-container {
+          width: 15.5vw;
+          height: 17vw;
+        }
+      `}</style>
+    </div>
   );
 };
 
