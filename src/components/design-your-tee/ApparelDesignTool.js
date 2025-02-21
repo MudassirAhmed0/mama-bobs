@@ -1,6 +1,9 @@
 "use client";
 import { Trash } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
+import ShirtView from "./ShirtView";
+import CanvasArea from "./CanvasArea";
+import DesignPalette from "./DesignPalette";
 
 const designOptions = [
   {
@@ -202,88 +205,37 @@ const ApparelDesignTool = () => {
     <div className="flex justify-between w-[95%] mx-auto mt-[10vw]">
       {/* Shirt Views */}
       <div className="min-w-[17vw] w-[17vw] h-[37vw] border-[1px] border-[#efefef] flex flex-col items-center">
-        <img
-          onClick={handleActiveShirt}
-          data-type="front"
+        <ShirtView
+          type="front"
           src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
-          alt="Front"
-          className={`p-[2.5%] m-[2.5%] w-[90%] h-[45%] object-cover cursor-pointer ${
-            currentCanvasType === "front"
-              ? "active border-[1px] border-[#dedede]"
-              : ""
-          }`}
-        />
-        <img
+          currentCanvasType={currentCanvasType}
           onClick={handleActiveShirt}
-          data-type="back"
+        />
+        <ShirtView
+          type="back"
           src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/cbeuxcz6mmj4zhijvnnh.png"
-          alt="Back"
-          className={`p-[2.5%] m-[2.5%] w-[90%] h-[45%] object-cover cursor-pointer ${
-            currentCanvasType === "back"
-              ? "active border-[1px] border-[#dedede]"
-              : ""
-          }`}
+          currentCanvasType={currentCanvasType}
+          onClick={handleActiveShirt}
         />
       </div>
 
-      {/* Design Canvas */}
-      <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] bg-white relative">
-        {selectedObject && (
-          <button
-            onClick={handleDelete}
-            className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full"
-          >
-            <Trash size={16} />
-          </button>
-        )}
-
-        <img
-          src={canvasImage}
-          alt="Tshirt"
-          className="w-full h-full object-contain"
-        />
-
-        <div
-          id="canvas-container"
-          className="absolute top-[11vw] left-[14.5vw]"
-        >
-          {previewImage ? (
-            <img src={previewImage} alt="Preview" className="w-full h-full" />
-          ) : (
-            <>
-              <canvas
-                id="canvasFront"
-                ref={canvasFrontRef}
-                className={`absolute  `}
-              />
-              <canvas
-                id="canvasBack"
-                ref={canvasBackRef}
-                className={`absolute  `}
-              />
-              <span className="absolute inset-0 border-[#efefef] border pointer-events-none" />
-            </>
-          )}
-        </div>
-      </div>
+      {/* Canvas Area */}
+      <CanvasArea
+        canvasImage={canvasImage}
+        previewImage={previewImage}
+        selectedObject={selectedObject}
+        currentCanvasType={currentCanvasType}
+        canvasFrontRef={canvasFrontRef}
+        canvasBackRef={canvasBackRef}
+        onDelete={handleDelete}
+      />
 
       {/* Design Controls */}
       <div className="min-w-[30vw] w-[30vw] p-4 bg-[#f5f5f5]">
-        <div className="design-palette grid grid-cols-3 gap-2 mb-5">
-          {designOptions.map((option) => (
-            <div
-              key={option.src}
-              className="design-option cursor-pointer p-1 border-2 border-transparent hover:border-blue-500"
-              onClick={() => handleAddGraphic(option.src)}
-            >
-              <img
-                src={option.src}
-                alt={option.alt}
-                className="w-full h-auto"
-              />
-            </div>
-          ))}
-        </div>
+        <DesignPalette
+          designOptions={designOptions}
+          onAddGraphic={handleAddGraphic}
+        />
 
         <div className="flex gap-4">
           <button
