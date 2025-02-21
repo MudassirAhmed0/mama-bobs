@@ -3,9 +3,17 @@ import useAos from "@/hooks/useAos";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { Search, ShoppingCart } from "lucide-react";
+import { LuSearch } from "react-icons/lu";
+import { BsCart2 } from "react-icons/bs";
+import { RiMenu3Fill } from "react-icons/ri";
+
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import SearchBar from "./search/SearchBar";
+import useSearch from "./search/useSearch";
+import { IoCloseSharp } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 const navLinks = [
   {
     title: "Feature Products",
@@ -29,6 +37,8 @@ const navLinks = [
   },
 ];
 const Header = () => {
+  const { activeSearch, handleSearchActive } = useSearch();
+  const pathname = usePathname();
   useEffect(() => {
     // Initialize Lenis
     const lenis = new Lenis({
@@ -52,7 +62,11 @@ const Header = () => {
   useAos();
   const [show, setShow] = useState(false);
   return (
-    <header className="absolute z-10 top-0 left-0 w-full">
+    <header className="absolute z-[9] top-0 left-0 w-full">
+      <SearchBar
+        handleSearchActive={handleSearchActive}
+        activeSearch={activeSearch}
+      />
       <nav className="w-full border-b border-black lg:py-[1.66666666667vh] py-[20px]">
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link
@@ -64,7 +78,7 @@ const Header = () => {
             <Image fill src="/images/icons/logo.png" alt="logo" />
           </Link>
           <div>
-            <button
+            {/* <button
               onClick={() => setShow(!show)}
               className={`${
                 show ? "hidden" : ""
@@ -87,47 +101,36 @@ const Header = () => {
                 <line x1={4} y1={8} x2={20} y2={8} />
                 <line x1={4} y1={16} x2={20} y2={16} />
               </svg>
-            </button>
+            </button> */}
             <div
               id="menu"
-              className={` ${show ? "" : "hidden"} md:block lg:block `}
+              className={` ${
+                show ? "translate-x-0" : "-translate-x-full"
+              } lg:translate-x-0 absolute lg:relative top-0 bottom-0 left-0 right-0 bg-white lg:bg-transparent h-[100vh] lg:h-[unset] transition-all duration-300`}
             >
               <button
                 onClick={() => setShow(!show)}
-                className={`block md:hidden lg:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 fixed focus:outline-none focus:ring-2 focus:ring-gray-500 z-30 top-0 mt-6 right-6`}
+                className={`block lg:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 fixed z-30 top-0 mt-6 right-6 sm:mt-8 sm:right-8`}
               >
-                <svg
-                  aria-label="close main menu"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="#2c3e50"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <line x1={18} y1={6} x2={6} y2={18} />
-                  <line x1={6} y1={6} x2={18} y2={18} />
-                </svg>
+                <IoCloseSharp className="text-foreground cursor-pointer size-6 sm:size-8 min-w-6 sm:min-w-8" />
               </button>
-              <ul className="flex text-3xl md:text-base lg:text-[1.25vw] items-center p-10 lg:p-0 md:flex gap-6 flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
+              <ul className="flex h-full lg:h-[unset] text-3xl lg:text-[1.25vw] items-center p-10 lg:p-0 md:flex gap-6 flex-col lg:flex-row justify-center ">
                 {navLinks.map((navLink, index) => (
                   <li
                     key={index}
-                    className="text-black hover:text-[#ca8a04] cursor-pointer capitalize font-medium"
+                    className={`${
+                      pathname == navLink.link ? "text-yellow" : ""
+                    } text-foreground hover:text-[#ca8a04] cursor-pointer capitalize font-medium`}
                   >
                     <Link href={navLink.link}>{navLink.title}</Link>
                   </li>
                 ))}
-                <Link
+                {/* <Link
                   href={"/shop"}
                   className="w-full text-center lg:font-bold md:hidden block bg-[#a16207] transition duration-150 ease-in-out hover:bg-[#ca8a04] text-white rounded px-4 py-3 text-2xl"
                 >
                   Shop now
-                </Link>
+                </Link> */}
               </ul>
             </div>
           </div>
@@ -138,7 +141,7 @@ const Header = () => {
             Shop now
           </Link> */}
 
-          <div className="flex gap-x-4 items-center">
+          {/* <div className="flex gap-x-4 items-center">
             <Link
               href={"/cart"}
               className="flex items-center gap-2 border border-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
@@ -149,12 +152,34 @@ const Header = () => {
               href={"/cart"}
               className="flex items-center gap-2 border border-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
             >
-              <ShoppingCart size={20} /> Cart
-              {/* items in cart  number with red dot as usual in ecommerce */}
+              <ShoppingCart size={20} /> Cart 
               <span className="bg-red-500 text-white text-xs px-1 rounded-full">
                 0
               </span>
             </Link>
+          </div> */}
+          <div className="flex gap-x-3 lg:gap-x-4 items-stretch">
+            <LuSearch
+              onClick={() => handleSearchActive(true)}
+              className="text-foreground cursor-pointer sm:w-6 h-6 size-5 my-auto"
+            />
+            <div className="flex items-center relative z-[-1]">
+              <span className="w-[1px] min-w-[1px] h-[70%] bg-foreground block opacity-70"></span>
+            </div>{" "}
+            <Link href={"/cart"} className="flex items-center gap-2">
+              <BsCart2 className="text-foreground cursor-pointer sm:w-6 h-6 size-5" />
+
+              <span className="bg-red-500 text-white text-xs px-1 rounded-full">
+                0
+              </span>
+            </Link>
+            <div className="lg:hidden flex items-center relative z-[-1]">
+              <span className="w-[1px] min-w-[1px] h-[70%] bg-foreground block opacity-70"></span>
+            </div>{" "}
+            <RiMenu3Fill
+              onClick={() => setShow(!show)}
+              className="text-foreground cursor-pointer w-6 h-6 sm:w-8 sm:h-8 block lg:hidden"
+            />
           </div>
         </div>
       </nav>

@@ -3,6 +3,7 @@ function Hero() {
   return (
     <div className="pb-32 lg:pb-12 overflow-y-hidden min-h-[100vh] flex items-end justify-center relative">
       <div className="size-full absolute inset-0">
+        <span className="bg-gradient-to-b from-foreground to-background size-full absolute bottom-0 h-[50%] mix-blend-darken -scale-y-100"></span>
         <span className="bg-black size-full absolute inset-0 mix-blend-color"></span>
         <video
           muted

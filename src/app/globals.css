@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --yellow: #ca8a04;
 }
 
 body {
@@ -13,6 +14,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 @layer components {
+  .fullVh.fullSvh {
+    @apply min-h-[100vh] min-h-[100svh];
+  }
   .myContainer {
     @apply lg:w-[91.6666666667vw] w-[90.699%] mx-[auto];
   }
@@ -26,6 +30,18 @@ body {
     @apply lg:text-[3.33333333333vw] lg:leading-[3.95833333333vw] sm:text-[50px] sm:leading-[60px]
     text-[7.44186046512vw] leading-[42px] capitalize font-[600];
   }
+  .text40 {
+    @apply lg:text-[2.08333333333vw] lg:leading-[2.60416666667vw] sm:text-[30px] sm:leading-[40px]
+    text-[25px] leading-[35px] capitalize;
+  }
+  .text50 {
+    @apply lg:text-[2.60416666667vw] lg:leading-[3.125vw] sm:text-[40px] sm:leading-[50px]
+    text-[32px] leading-[42px] capitalize font-medium;
+  }
+  .text60 {
+    @apply lg:text-[3.125vw] lg:leading-[3.64583333333vw] sm:text-[50px] sm:leading-[60px]
+    text-[32px] leading-[42px] capitalize font-semibold;
+  }
   .text24 {
     @apply lg:text-[1.25vw] lg:leading-[1.77083333333vw];
   }
@@ -34,5 +50,17 @@ body {
   }
   .mt30 {
     @apply lg:mt-[1.5625vw] sm:mt-[22px] mt-[16px];
+  }
+}
+.search-overlay {
+  animation: search-fade 250ms linear forwards;
+  animation-delay: 300ms;
+}
+@keyframes search-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
