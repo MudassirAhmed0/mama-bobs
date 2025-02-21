@@ -45,7 +45,7 @@ const CanvasArea = ({
               currentCanvasType === "back" ? "z-10" : "z-0"
             }`}
           />
-          <span className="absolute inset-0 border-[#efefef] border pointer-events-none" />
+          <span className="absolute inset-0 border-[#efefef] border pointer-events-none z-[11]" />
         </>
       )}
     </div>

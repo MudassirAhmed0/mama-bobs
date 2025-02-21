@@ -1,9 +1,16 @@
 "use client";
-import { Trash } from "lucide-react";
-import { useRef, useEffect, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import {
+  addGraphicToCanvas,
+  deleteSelectedObject,
+  getCanvasPreview,
+} from "./utils/canvasUtils";
 import ShirtView from "./ShirtView";
 import CanvasArea from "./CanvasArea";
 import DesignPalette from "./DesignPalette";
+import { useCanvasResize } from "./hooks/useCanvasResize";
+import { useCanvasStyles } from "./hooks/useCanvasStyles";
+import { useFabricScript } from "./hooks/useFabricScript";
 
 const designOptions = [
   {
@@ -29,126 +36,33 @@ const ApparelDesignTool = () => {
   const canvasFrontRef = useRef(null);
   const canvasBackRef = useRef(null);
 
-  useEffect(() => {
-    const initCanvas = (canvasId, canvasRef) => {
-      const canvas = new fabric.Canvas(canvasId, {
+  const initCanvases = useCallback(() => {
+    const initCanvas = (canvasRef) => {
+      const canvas = new fabric.Canvas(canvasRef.current, {
         width: (window.innerWidth / 100) * 15.5,
         height: (window.innerWidth / 100) * 17,
       });
+
+      canvas.on("selection:created", (e) => setSelectedObject(e.target));
+      canvas.on("selection:updated", (e) => setSelectedObject(e.target));
+      canvas.on("selection:cleared", () => setSelectedObject(null));
+
       canvasRef.current = canvas;
-
-      canvas.on("selection:created", (e) => {
-        setSelectedObject(e.target);
-      });
-
-      canvas.on("selection:updated", (e) => {
-        setSelectedObject(e.target);
-      });
-
-      canvas.on("selection:cleared", () => {
-        setSelectedObject(null);
-      });
-
-      return () => canvas.dispose();
     };
 
-    const initCanvases = () => {
-      initCanvas("canvasFront", canvasFrontRef);
-      initCanvas("canvasBack", canvasBackRef);
-    };
-
-    const script = document.createElement("script");
-    script.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js";
-    script.onload = initCanvases;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-      [canvasFrontRef.current, canvasBackRef.current].forEach((canvas) => {
-        if (canvas) canvas.dispose();
-      });
-    };
+    initCanvas(canvasFrontRef);
+    initCanvas(canvasBackRef);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      [canvasFrontRef.current, canvasBackRef.current].forEach((canvas) => {
-        if (canvas) {
-          canvas.setDimensions({
-            width: (window.innerWidth / 100) * 15.5,
-            height: (window.innerWidth / 100) * 17,
-          });
-        }
-      });
-    };
+  // Load Fabric.js script once and initialize canvases
+  useFabricScript(initCanvases);
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // Other hooks
 
-  const isFirstRenderRef = useRef(true);
-  useEffect(() => {
-    const applyCanvasStyles = () => {
-      if (currentCanvasType === "front") {
-        document.getElementById("canvasFront").parentElement.style.zIndex = "2";
+  useCanvasResize([canvasFrontRef, canvasBackRef]);
+  useCanvasStyles(currentCanvasType);
 
-        const lowerCanvasesFront = document
-          .getElementById("canvasFront")
-          ?.parentElement.querySelectorAll("canvas");
-
-        lowerCanvasesFront?.forEach((lowerCanvasFront) => {
-          lowerCanvasFront.style.pointerEvents = "auto";
-          lowerCanvasFront.style.opacity = "1";
-        });
-
-        const lowerCanvasesBack = document
-          .getElementById("canvasBack")
-          ?.parentElement.querySelectorAll("canvas");
-
-        lowerCanvasesBack?.forEach((lowerCanvasBack) => {
-          lowerCanvasBack.style.pointerEvents = "none";
-          lowerCanvasBack.style.opacity = "0";
-        });
-      } else {
-        document.getElementById("canvasBack").parentElement.style.zIndex = "2";
-        const lowerCanvasesBack = document
-          .getElementById("canvasBack")
-          ?.parentElement.querySelectorAll("canvas");
-
-        lowerCanvasesBack?.forEach((lowerCanvasBack) => {
-          lowerCanvasBack.style.pointerEvents = "auto";
-          lowerCanvasBack.style.opacity = "1";
-        });
-
-        const lowerCanvasesFront = document
-          .getElementById("canvasFront")
-          ?.parentElement.querySelectorAll("canvas");
-
-        lowerCanvasesFront?.forEach((lowerCanvasFront) => {
-          lowerCanvasFront.style.pointerEvents = "none";
-          lowerCanvasFront.style.opacity = "0";
-        });
-      }
-    };
-
-    if (isFirstRenderRef.current) {
-      const timeout = setTimeout(() => {
-        applyCanvasStyles();
-        const backCanvasContainer =
-          document.getElementById("canvasBack")?.parentElement;
-        backCanvasContainer.style.position = "absolute";
-        backCanvasContainer.style.top = "0";
-        backCanvasContainer.style.left = "0";
-        isFirstRenderRef.current = false; // Mark as not first render
-      }, 1000);
-
-      return () => clearTimeout(timeout); // Cleanup timeout on unmount
-    } else {
-      applyCanvasStyles(); // Run immediately on subsequent renders
-    }
-  }, [currentCanvasType]);
-
+  // Event Handlers
   const handleActiveShirt = (e) => {
     const type = e.target.dataset.type;
     setCanvasImage(e.target.src);
@@ -161,22 +75,7 @@ const ApparelDesignTool = () => {
       currentCanvasType === "front"
         ? canvasFrontRef.current
         : canvasBackRef.current;
-    if (!canvas) return;
-
-    fabric.Image.fromURL(src, (img) => {
-      img.set({
-        left: canvas.width / 2,
-        top: canvas.height / 2,
-        originX: "center",
-        originY: "center",
-        scaleX: 0.2,
-        scaleY: 0.2,
-        hasControls: true,
-      });
-      canvas.add(img);
-      canvas.setActiveObject(img);
-      canvas.requestRenderAll();
-    });
+    addGraphicToCanvas(canvas, src);
   };
 
   const handlePreview = () => {
@@ -184,9 +83,7 @@ const ApparelDesignTool = () => {
       currentCanvasType === "front"
         ? canvasFrontRef.current
         : canvasBackRef.current;
-    if (canvas) {
-      setPreviewImage(canvas.toDataURL({ format: "png", quality: 1 }));
-    }
+    setPreviewImage(getCanvasPreview(canvas));
   };
 
   const handleDelete = () => {
@@ -194,11 +91,8 @@ const ApparelDesignTool = () => {
       currentCanvasType === "front"
         ? canvasFrontRef.current
         : canvasBackRef.current;
-    if (canvas && selectedObject) {
-      canvas.remove(selectedObject);
-      setSelectedObject(null);
-      canvas.discardActiveObject().requestRenderAll();
-    }
+    deleteSelectedObject(canvas, selectedObject);
+    setSelectedObject(null);
   };
 
   return (
@@ -236,7 +130,6 @@ const ApparelDesignTool = () => {
           designOptions={designOptions}
           onAddGraphic={handleAddGraphic}
         />
-
         <div className="flex gap-4">
           <button
             onClick={handlePreview}
@@ -249,16 +142,6 @@ const ApparelDesignTool = () => {
           </button>
         </div>
       </div>
-
-      <style jsx>{`
-        .active {
-          border: 1px solid #dedede;
-        }
-        #canvas-container {
-          width: 15.5vw;
-          height: 17vw;
-        }
-      `}</style>
     </div>
   );
 };
