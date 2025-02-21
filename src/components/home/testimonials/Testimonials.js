@@ -3,7 +3,51 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import the Navigation module
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
+const testimonials = [
+  {
+    profile: "/images/home/testimonials/profiles/place-holder.png",
+    review: `
+      <p>Amazing customer service! The product quality exceeded my expectations, and the delivery was faster than expected. Highly recommended!</p>
+    `,
+    name: "Jessica Morgan",
+  },
+  {
+    profile: "/images/home/testimonials/profiles/place-holder.png",
+    review: `
+      <p>Great selection of products at unbeatable prices. I've been shopping here for months and have never been disappointed.</p>
+    `,
+    name: "Michael Thompson",
+  },
+  {
+    profile: "/images/home/testimonials/profiles/place-holder.png",
+    review: `
+      <p>I love the seamless shopping experience. The website is easy to navigate, and the checkout process is hassle-free.</p>
+    `,
+    name: "Samantha Lee",
+  },
+  {
+    profile: "/images/home/testimonials/profiles/place-holder.png",
+    review: `
+      <p>The product descriptions were accurate, and the quality was top-notch. Will definitely shop here again!</p>
+    `,
+    name: "Daniel Carter",
+  },
+  {
+    profile: "/images/home/testimonials/profiles/place-holder.png",
+    review: `
+      <p>Fast shipping and great packaging. The customer support team was very helpful when I had a query.</p>
+    `,
+    name: "Emily Davis",
+  },
+  {
+    profile: "/images/home/testimonials/profiles/place-holder.png",
+    review: `
+      <p>I was skeptical at first, but this store proved me wrong. Reliable service and fantastic products!</p>
+    `,
+    name: "John Reynolds",
+  },
+];
 
 export default function Testimonials() {
   return (
@@ -17,7 +61,7 @@ export default function Testimonials() {
         </h1>
         <Swiper
           data-aos="fade"
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           centeredSlides={true}
           loop={true}
           grabCursor={true}
@@ -25,23 +69,22 @@ export default function Testimonials() {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           }}
+          autoplay={{ disableOnInteraction: false }}
           slidesPerView={"auto"}
           spaceBetween={"20"}
-          className="mt-12 md:mt-10 2xl:mt-20 swiper mySwiper"
+          className="mt-12 md:mt-10 2xl:mt-20 swiper mySwiper !w-full"
         >
-          {[1, 2, 3, 4].map((v, index) => (
-            <SwiperSlide key={index} className="swiper-slide !w-1/2">
-              <div className="flex justify-center items-center flex-col">
-                <div className="w-12 relative z-20">
-                  <img src="/images/home/testimonials/slide.svg" alt="apple" />
-                </div>
-                <div className="-mt-6 flex border h-18 rounded text-left text-black border-black bg-white justify-between items-start flex-col px-4 md:px-6">
-                  <p className="mt-10 text-base leading-normal ">
-                    {index} It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout. The point of using Lorem Ipsum is that it has a
-                    more-or-less normal distribution of letters.
-                  </p>
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide
+              key={index}
+              className="swiper-slide lg:!w-1/2 !w-[85%]"
+            >
+              <div className="flex justify-center items-center flex-col select-none">
+                <div className="flex w-full border h-18 rounded text-left text-black border-black bg-white justify-between items-start flex-col px-4 md:px-6">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: testimonial.review }}
+                    className="mt-10 text-lg leading-normal lg:h-[100px] sm:h-[120px] h-[180px] overflow-y-auto w-full"
+                  ></div>
                   <div className="flex justify-end pb-6 space-y-11 items-end w-full flex-col h-28">
                     <div className="flex grow-0 w-6">
                       <img
@@ -49,19 +92,13 @@ export default function Testimonials() {
                         alt="quotes"
                       />
                     </div>
-                    <div className="w-full flex justify-start items-center space-x-2">
-                      <div>
-                        <img
-                          src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonials_7_Ellipse%20113.png"
-                          alt="woman avatar"
-                        />
+                    <div className="w-full flex justify-center items-center gap-4">
+                      <div className="size-8 lg:size-12">
+                        <img src={testimonial.profile} alt="woman avatar" />
                       </div>
                       <div className="flex justify-start items-start flex-col space-y-2">
                         <p className="text-lg font-medium leading-none">
-                          Casy Camilari
-                        </p>
-                        <p className="text-sm leading-none">
-                          Digital Marketing Director
+                          {testimonial.name}
                         </p>
                       </div>
                     </div>
@@ -77,14 +114,14 @@ export default function Testimonials() {
           data-aos="fade"
           className="flex justify-center mt-20 items-center space-x-6 w-full"
         >
-          <button className="rounded-full p-1.5 flex justify-center items-center bg-black swiper-button-prev w-1.5 h-2.5">
+          <button className="rounded-full p-1.5 flex justify-center items-center bg-black swiper-button-prev w-1.5 h-2.5 active:bg-opacity-55">
             <img
               className="w-6 h-6 scale-x-[-1]"
               src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonials_7_svg-6_next.svg"
               alt="prev"
             />
           </button>
-          <button className="rounded-full p-1.5 flex justify-center items-center bg-black swiper-button-next w-1.5 h-2.5">
+          <button className="rounded-full p-1.5 flex justify-center items-center bg-black swiper-button-next w-1.5 h-2.5 active:bg-opacity-55">
             <img
               className="w-6 h-6"
               src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonials_7_svg-6_next.svg"

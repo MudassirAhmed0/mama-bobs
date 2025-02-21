@@ -49,7 +49,7 @@ function ProductDetails() {
 
   return (
     <>
-      <div className="px-2 py-12">
+      <div className="px-2 lg:py-12 mt-40">
         <div className="lg:max-w-[1440px] md:max-w-[744px] max-w-[375px] mx-auto">
           <div className="flex items-center justify-center ">
             <div

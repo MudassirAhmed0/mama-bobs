@@ -64,3 +64,9 @@ body {
     opacity: 1;
   }
 }
+@media (max-width: 1024px) {
+  body.active {
+    height: 100svh;
+    overflow: hidden;
+  }
+}
