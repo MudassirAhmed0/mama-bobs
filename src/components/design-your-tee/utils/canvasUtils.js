@@ -23,5 +23,5 @@ export const deleteSelectedObject = (canvas, selectedObject) => {
 };
 
 export const getCanvasPreview = (canvas) => {
-  return canvas ? canvas.toDataURL({ format: "png", quality: 1 }) : null;
+  // return canvas ? canvas.toDataURL({ format: "png", quality: 1 }) : null;
 };
