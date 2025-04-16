@@ -10,7 +10,7 @@ const CanvasArea = ({
   canvasBackRef,
   onDelete,
 }) => (
-  <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] bg-white relative">
+  <div className="min-w-[45vw] w-[45vw] h-[50vw] border-[1px] border-[#efefef] bg-white relative">
     {selectedObject && (
       <button
         onClick={onDelete}
@@ -26,7 +26,7 @@ const CanvasArea = ({
       className="w-full h-full object-contain"
     />
 
-    <div id="canvas-container" className="absolute top-[11vw] left-[14.5vw]">
+    <div id="canvas-container" className="absolute top-[15vw] left-[15.5vw]">
       {previewImage ? (
         <img src={previewImage} alt="Preview" className="w-full h-full" />
       ) : (

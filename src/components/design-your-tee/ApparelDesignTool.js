@@ -15,21 +15,60 @@ import { useFabricScript } from "./hooks/useFabricScript";
 const designOptions = [
   {
     type: "graphic",
-    src: "/images/icons/logo.png",
+    src: "/images/design-assets/designs/1.png",
     alt: "Design 1",
   },
   {
     type: "graphic",
-    src: "https://img.freepik.com/free-vector/life-is-art-paint-your-dreams-typography-design-illustration_53876-8565.jpg",
+    src: "/images/design-assets/designs/2.png",
     alt: "Design 2",
+  },
+  {
+    type: "graphic",
+    src: "/images/design-assets/designs/3.png",
+    alt: "Design 3",
+  },
+  {
+    type: "graphic",
+    src: "/images/design-assets/designs/4.png",
+    alt: "Design 4",
+  },
+  {
+    type: "graphic",
+    src: "/images/design-assets/designs/5.png",
+    alt: "Design 5",
+  },
+  {
+    type: "graphic",
+    src: "/images/design-assets/designs/6.png",
+    alt: "Design 6",
+  },
+  {
+    type: "graphic",
+    src: "/images/design-assets/designs/7.png",
+    alt: "Design 7",
+  },
+  {
+    type: "graphic",
+    src: "/images/design-assets/designs/8.png",
+    alt: "Design 8",
   },
 ];
 
-const ApparelDesignTool = () => {
+// Default tee images for fallback
+const DEFAULT_FRONT_IMAGE = "/images/design-assets/tees/white-front.png";
+const DEFAULT_BACK_IMAGE = "/images/design-assets/tees/white-back.png";
+
+const ApparelDesignTool = ({ selectedTee }) => {
+  // Log the selected tee when component mounts
+  useEffect(() => {
+    console.log("Selected tee in ApparelDesignTool:", selectedTee);
+  }, [selectedTee]);
+
   const [canvasImage, setCanvasImage] = useState(
-    "https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
+    selectedTee ? selectedTee.frontImage : DEFAULT_FRONT_IMAGE
   );
-  const [price,setPrice] = useState(50);
+  const [price, setPrice] = useState(selectedTee ? selectedTee.price : 50);
   const [preview, setPreview] = useState(false);
   const [selectedObject, setSelectedObject] = useState(null);
   const [currentCanvasType, setCurrentCanvasType] = useState("front");
@@ -43,7 +82,7 @@ const ApparelDesignTool = () => {
   const initCanvases = useCallback(() => {
     const initCanvas = (canvasRef) => {
       const canvas = new fabric.Canvas(canvasRef.current, {
-        width: (window.innerWidth / 100) * 15.5,
+        width: (window.innerWidth / 100) * 14.5,
         height: (window.innerWidth / 100) * 17,
       });
       const handleCanvasChange = () => {
@@ -52,9 +91,9 @@ const ApparelDesignTool = () => {
       canvas.on("selection:created", (e) => e.target && setSelectedObject(e.target));
       canvas.on("selection:updated", (e) => e.target && setSelectedObject(e.target));
       canvas.on("selection:cleared", () => setSelectedObject(null));
-  canvas.on('object:added', handleCanvasChange);
-        canvas.on('object:modified', handleCanvasChange);
-        canvas.on('object:removed', handleCanvasChange);
+      canvas.on('object:added', handleCanvasChange);
+      canvas.on('object:modified', handleCanvasChange);
+      canvas.on('object:removed', handleCanvasChange);
       canvasRef.current = canvas;
     };
 
@@ -65,11 +104,22 @@ const ApparelDesignTool = () => {
   // Load Fabric.js script once and initialize canvases
   useFabricScript(initCanvases);
 
-  // Other hooks
+  // Clean up canvases and event listeners when component unmounts
+  useEffect(() => {
+    return () => {
+      // Dispose of Fabric.js canvases
+      if (canvasFrontRef.current && typeof canvasFrontRef.current.dispose === 'function') {
+        canvasFrontRef.current.dispose();
+      }
+      if (canvasBackRef.current && typeof canvasBackRef.current.dispose === 'function') {
+        canvasBackRef.current.dispose();
+      }
+    };
+  }, []);
 
+  // Other hooks
   useCanvasResize([canvasFrontRef, canvasBackRef]);
   useCanvasStyles(currentCanvasType);
-
 
   const calculatePrice = useCallback(() => {
     let frontAddition = 0;
@@ -111,8 +161,6 @@ const ApparelDesignTool = () => {
     setPrice(newPrice);
   }, []);
 
-   
-
   // Recalculate price on window resize
   useEffect(() => {
     window.addEventListener('resize', calculatePrice);
@@ -120,7 +168,6 @@ const ApparelDesignTool = () => {
       window.removeEventListener('resize', calculatePrice);
     };
   }, [calculatePrice]);
-
 
   // Event Handlers
   const handleActiveShirt = (e) => {
@@ -163,18 +210,18 @@ const ApparelDesignTool = () => {
 
   return (
     <>
-      <div className="flex justify-between w-[95%] mx-auto mt-[10vw]">
+      <div className="flex justify-between w-[95%] mx-auto ">
         {/* Shirt Views */}
-        <div className="min-w-[17vw] w-[17vw] h-[37vw] border-[1px] border-[#efefef] flex flex-col items-center">
+        <div className="min-w-[17vw] w-[17vw] h-[50vw] border-[1px] border-[#efefef] flex flex-col items-center">
           <ShirtView
             type="front"
-            src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"
+            src={selectedTee ? selectedTee.frontImage : DEFAULT_FRONT_IMAGE}
             currentCanvasType={currentCanvasType}
             onClick={handleActiveShirt}
           />
           <ShirtView
             type="back"
-            src="https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/cbeuxcz6mmj4zhijvnnh.png"
+            src={selectedTee ? selectedTee.backImage : DEFAULT_BACK_IMAGE}
             currentCanvasType={currentCanvasType}
             onClick={handleActiveShirt}
           />
@@ -199,6 +246,12 @@ const ApparelDesignTool = () => {
           />
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Price: ${price}</h2>
+            {selectedTee && (
+              <div className="text-sm text-gray-600">
+                <p>Base Tee: {selectedTee.name}</p>
+                <p>Color: {selectedTee.color}</p>
+              </div>
+            )}
           </div>
           <div className="flex gap-4">
             <button
@@ -222,34 +275,34 @@ const ApparelDesignTool = () => {
       >
         Close Preview
       </button>
-      <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] bg-white relative">
+      <div className="min-w-[45vw] w-[45vw] h-[50vw] border-[1px] border-[#efefef] bg-white relative">
     
 
     <img
-      src={"https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/yhht1lpisuojq1kflyxn.png"}
+      src={selectedTee ? selectedTee.frontImage : DEFAULT_FRONT_IMAGE}
       alt="Tshirt"
       className="w-full h-full object-contain"
     />
 
-<div   className="absolute top-[11vw] left-[14.5vw] w-[15.5vw] h-[17vw]  ">
+<div   className="absolute top-[15vw] left-[15.5vw] w-[14.5vw] h-[17vw]  ">
      <img src={frontPreview} className="size-full"/>
      
      </div>
   </div>
-      <div className="min-w-[45vw] w-[45vw] h-[37vw] border-[1px] border-[#efefef] bg-white relative">
+      <div className="min-w-[45vw] w-[45vw] h-[50vw] border-[1px] border-[#efefef] bg-white relative">
     
 
     <img
-      src={"https://res.cloudinary.com/dks0une4w/image/upload/v1739935642/cbeuxcz6mmj4zhijvnnh.png"}
+      src={selectedTee ? selectedTee.backImage : DEFAULT_BACK_IMAGE}
       alt="Tshirt"
       className="w-full h-full object-contain"
     />
 
-    <div   className="absolute top-[11vw] left-[14.5vw] w-[15.5vw] h-[17vw]  ">
+    <div className="absolute top-[11vw] left-[14.5vw] w-[15.5vw] h-[17vw]  ">
      <img src={backPreview} className="size-full"/>
     </div>
-  </div>
-      </div>}
+    </div>
+    </div>}
     </>
   );
 };

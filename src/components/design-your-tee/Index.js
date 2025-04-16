@@ -1,10 +1,11 @@
+'use client'
 import React from "react";
-import ApparelDesignTool from "./ApparelDesignTool";
+import TeeSelector from "./TeeSelector";
 
 const DesignYourTeePage = () => {
   return (
     <div>
-      <ApparelDesignTool />
+      <TeeSelector />
     </div>
   );
 };

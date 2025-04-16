@@ -23,6 +23,7 @@ const navLinks = [
   {
     title: "Design your Tee",
     link: "/design-your-tee",
+    anchor:true
   },
   {
     title: "Faqs",
@@ -132,7 +133,7 @@ const Header = () => {
                       pathname == navLink.link ? "text-yellow" : ""
                     } text-foreground hover:text-[#ca8a04] cursor-pointer capitalize font-medium`}
                   >
-                    <Link href={navLink.link}>{navLink.title}</Link>
+                   {navLink.anchor ? <a href={navLink.link}>{navLink.title}</a> : <Link href={navLink.link}>{navLink.title}</Link>}
                   </li>
                 ))}
                 {/* <Link

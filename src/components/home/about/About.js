@@ -14,12 +14,12 @@ export default function About() {
       <div className="border20 relative z-[2] myContainer bg-black bg-opacity-[0.7] lg:p-[4.16666666667vw] sm:p-[40px] sm:py-[60px] py-[50px] p-[30px] flex flex-wrap lg:gap-[2.5vw] sm:gap-[30px] gap-[20px]">
         <div
           data-aos="fade"
-          className="border20 overflow-hidden lg:w-[36.4583333333vw] lg:h-[70vh] sm:h-[400px] h-[300px] lg:mt-[-11vw]"
+          className="border20 overflow-hidden lg:w-[36.4583333333vw] lg:h-[80vh] sm:h-[400px] h-[300px] lg:mt-[-11vw]"
         >
           <img
             src="/images/home/about/about.jpg"
             alt="about"
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full object-top"
           />
         </div>
         <div className="text-white lg:w-[39.5833333333vw]">
