@@ -3,6 +3,7 @@ import Hero from "./hero/Hero";
 import About from "./about/About";
 import FeaturedProducts from "./featured-products/FeaturedProducts";
 import Values from "./values/Values";
+import Gallery from "./gallery/Gallery";
 import Testimonials from "./testimonials/Testimonials";
 import Cta from "./cta/Cta";
 
@@ -13,6 +14,7 @@ const HomePage = () => {
       <About />
       <FeaturedProducts />
       <Values />
+      <Gallery />
       <Testimonials />
       <Cta />
     </>

@@ -27,9 +27,7 @@ export default function About() {
             Born from the School of Hard Knocks.
           </h2>
           <p data-aos="fade-up" className="lg:text24 mtext18 mt30">
-            Exploding Woke Culture Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Neque dolore est beatae corporis? Explicabo nam, a
-            est saepe omnis tempora quam sit.
+          We at MAMA Bobs are Exploding Woke Culture because we have a degree in life that was awarded after it has been earned in the school of hard knocks the college of getting need in the rattlars and in the university of getting crap kick out of you.
           </p>
         </div>
       </div>

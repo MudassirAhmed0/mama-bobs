@@ -19,7 +19,7 @@ const FeaturedProducts = () => {
                 className="relative flex flex-col group overflow-hidden"
               >
                 <img
-                  src="/images/home/1.jpg"
+                  src="/images/home/featured-products/1.jpg"
                   alt="two girls"
                   className="w-full group-hover:scale-[1.04] transition-all duration-500"
                 />
@@ -45,7 +45,7 @@ const FeaturedProducts = () => {
                 className="relative flex flex-col group overflow-hidden"
               >
                 <img
-                  src="https://i.ibb.co/cvN3gMZ/carousel-2.png"
+                   src="/images/home/featured-products/2.jpg"
                   alt="black guy"
                   className="w-full group-hover:scale-[1.04] transition-all duration-500"
                 />

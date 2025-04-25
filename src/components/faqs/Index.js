@@ -5,6 +5,18 @@ import Faq from "./Faq";
 const FaqsPage = () => {
   const faqs = [
     {
+      question: " What are dangleberries and a dictionary style explanation?",
+      answer: "DANGLEBERRIE - bead of self produced  ecsrement that has attached itself to your hairy undercarriage! And dingle dangles in that region hence DANGLEBERRIE!!",
+    },
+    {
+      question: " what is feltching and explanation?",
+      answer: "A sexual act term commonly used in the LGBTQIA+ community. It is in layman's terms when one homosexual male ejaculates in another homosexual males nether region orifice and then make the highly dubious decision to go and suck his deposit back out again!",
+    },
+    {
+      question: "what is the meaning of life?",
+      answer: " The aim is to secure yourself a life of peace, contentment and love by living with positivity and above all in any situation- BE KIND! BE KIND! BE KIND!",
+    },
+    {
       question: "What is our return policy?",
       answer: "You can return any product within 30 days of purchase.",
     },
@@ -53,15 +65,35 @@ const FaqsPage = () => {
   const contentRefs = useRef([]);
   const [heights, setHeights] = useState({});
 
-  useEffect(() => {
+  // Function to calculate heights of all FAQ content
+  const calculateHeights = () => {
     const newHeights = {};
     contentRefs.current.forEach((el, index) => {
       if (el) {
-        newHeights[index] = el.scrollHeight;
+        // Add extra padding to ensure full visibility
+        newHeights[index] = el.scrollHeight + 10;
       }
     });
     setHeights(newHeights);
+  };
+
+  // Calculate heights on component mount
+  useEffect(() => {
+    calculateHeights();
+    
+    // Recalculate when window is resized
+    window.addEventListener('resize', calculateHeights);
+    
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener('resize', calculateHeights);
+    };
   }, []);
+  
+  // Recalculate heights when open index changes
+  useEffect(() => {
+    calculateHeights();
+  }, [openIndex]);
 
   const toggleFAQ = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));

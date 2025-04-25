@@ -1,16 +1,19 @@
 import React from "react";
 
 const Faq = ({ faq, index, toggleFAQ, openIndex, contentRefs, heights }) => {
+  const isOpen = openIndex === index;
+  
   return (
-    <div key={index} className="group border border-gray-400 p-4 rounded-2xl">
+    <div className="group border border-gray-400 p-4 rounded-2xl">
       <button
         className="lg:text-2xl text-lg w-full text-left font-semibold text-black focus:outline-none flex justify-between items-start gap-2"
         onClick={() => toggleFAQ(index)}
+        aria-expanded={isOpen}
       >
-        {faq.question}
+        <span>{faq.question}</span>
         <span
-          className={`transform transition-transform duration-300  ${
-            openIndex === index ? "rotate-180 text-gray-400" : "rotate-0"
+          className={`transform transition-transform duration-300 flex-shrink-0 ${
+            isOpen ? "rotate-180 text-gray-400" : "rotate-0"
           } lg:group-hover:text-gray-400`}
         >
           ▼
@@ -18,13 +21,18 @@ const Faq = ({ faq, index, toggleFAQ, openIndex, contentRefs, heights }) => {
       </button>
       <div
         ref={(el) => (contentRefs.current[index] = el)}
-        className="overflow-hidden transition-all duration-500 ease-in-out"
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+          isOpen ? "mt-2" : "mt-0"
+        }`}
         style={{
-          height: openIndex === index ? `${heights[index]}px` : "0px",
-          opacity: openIndex === index ? `1` : "0",
+          height: isOpen ? `${heights[index] || 'auto'}px` : "0px",
+          opacity: isOpen ? 1 : 0,
+          visibility: isOpen ? "visible" : "hidden",
         }}
       >
-        <p className="text-gray-700 pt-2 lg:text-lg">{faq.answer}</p>
+        <div className="mb-1">
+          <p className="text-gray-700 pt-2 lg:text-lg whitespace-pre-line">{faq.answer}</p>
+        </div>
       </div>
     </div>
   );
