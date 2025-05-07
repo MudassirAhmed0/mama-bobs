@@ -5,17 +5,10 @@ import Faq from "./Faq";
 const FaqsPage = () => {
   const faqs = [
     {
-      question: " What are dangleberries and a dictionary style explanation?",
+      question: " What are dangleberries?",
       answer: "DANGLEBERRIE - bead of self produced  ecsrement that has attached itself to your hairy undercarriage! And dingle dangles in that region hence DANGLEBERRIE!!",
     },
-    {
-      question: " what is feltching and explanation?",
-      answer: "A sexual act term commonly used in the LGBTQIA+ community. It is in layman's terms when one homosexual male ejaculates in another homosexual males nether region orifice and then make the highly dubious decision to go and suck his deposit back out again!",
-    },
-    {
-      question: "what is the meaning of life?",
-      answer: " The aim is to secure yourself a life of peace, contentment and love by living with positivity and above all in any situation- BE KIND! BE KIND! BE KIND!",
-    },
+    
     {
       question: "What is our return policy?",
       answer: "You can return any product within 30 days of purchase.",
@@ -24,6 +17,11 @@ const FaqsPage = () => {
       question: "Do we offer international shipping?",
       answer: "Yes, we ship to multiple countries worldwide.",
     },
+    {
+      question: " What is feltching and explanation?",
+      answer: "A sexual act term commonly used in the LGBTQIA+ community. It is in layman's terms when one homosexual male ejaculates in another homosexual males nether region orifice and then make the highly dubious decision to go and suck his deposit back out again!",
+    },
+    
     {
       question: "How can I track my order?",
       answer: "You will receive a tracking link once your order is shipped.",
@@ -35,6 +33,10 @@ const FaqsPage = () => {
     {
       question: "How do I contact customer support?",
       answer: "You can reach us via email or our 24/7 chat support.",
+    },
+    {
+      question: "What is the meaning of life?",
+      answer: " The aim is to secure yourself a life of peace, contentment and love by living with positivity and above all in any situation- BE KIND! BE KIND! BE KIND!",
     },
     {
       question: "Do you offer discounts for bulk orders?",
@@ -103,7 +105,7 @@ const FaqsPage = () => {
     <section className="lg:py1 pt-40 sm:pt-[240px] lg:pb-24 pb-24">
       <div className="myContainer lg:w-2/4">
         <h2 className="text60 text-foreground text-center">
-          Frequently Asked Questions
+        WHAT THE FAQ!!
         </h2>
         <div className="mt-12 flex flex-col gap-8 w-full">
           {faqs.map((faq, index) => (

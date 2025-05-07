@@ -8,6 +8,14 @@
   --yellow: #ca8a04;
 }
 
+@font-face {
+  font-family: "BubbleFont";
+  src: url("/fonts/bubble-font.ttf");
+}
+
+.bubble-font {
+  font-family: "BubbleFont", sans-serif;
+}
 body {
   color: var(--foreground);
   background: var(--background);

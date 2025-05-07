@@ -25,11 +25,11 @@ const FeaturedProducts = () => {
                 />
                 <span className="absolute inset-0 size-full bg-gradient-to-t from-black to-transparent"></span>
                 <div className="absolute m-6 bottom-0 z-30">
-                  <p className="text-sm leading-none text-white">
+                  {/* <p className="text-sm leading-none text-white">
                     Special collection
-                  </p>
-                  <h1 className="w-64 text-2xl font-semibold leading-8 mt-2 text-white">
-                    New Monochrome Collection
+                  </p> */}
+                  <h1 className=" text-2xl font-semibold leading-8 mt-2 text-white">
+                  UBBERFELTCHER SERIES
                   </h1>
                   <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
                     Discover
@@ -51,11 +51,11 @@ const FeaturedProducts = () => {
                 />
                 <span className="absolute inset-0 size-full bg-gradient-to-t from-black to-transparent"></span>
                 <div className="absolute m-6 bottom-0 z-30">
-                  <p className="text-sm leading-none text-white">
+                  {/* <p className="text-sm leading-none text-white">
                     Special collection
-                  </p>
-                  <h1 className="w-64 text-2xl font-semibold leading-8 mt-2 text-white">
-                    New Monochrome Collection
+                  </p> */}
+                  <h1 className=" text-2xl font-semibold leading-8 mt-2 text-white">
+                  SIGNATURE TEES
                   </h1>
                   <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
                     Discover
@@ -77,11 +77,11 @@ const FeaturedProducts = () => {
                 />
                 <span className="absolute inset-0 size-full bg-gradient-to-t from-black to-transparent"></span>
                 <div className="absolute m-6 bottom-0 z-30">
-                  <p className="text-sm leading-none text-white">
+                  {/* <p className="text-sm leading-none text-white">
                     Special collection
-                  </p>
-                  <h1 className="w-64 text-2xl font-semibold leading-8 mt-2 text-white">
-                    New Monochrome Collection
+                  </p> */}
+                  <h1 className=" text-2xl font-semibold leading-8 mt-2 text-white uppercase">
+                  The world according to mama bobs!!
                   </h1>
                   <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
                     Discover

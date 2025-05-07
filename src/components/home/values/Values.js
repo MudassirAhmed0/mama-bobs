@@ -1,4 +1,5 @@
 import { BookOpen, HeartHandshake, Landmark, Star, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const brandValues = [
@@ -35,21 +36,27 @@ const brandValues = [
 export default function Values() {
   return (
     <section className="relative text-white">
+      {/* option 1 */}
+      {/* <div className="absolute top-0 left-0 w-full h-full ">
+        <Image src="/images/icons/logo.png" alt="logo" fill  className="object-contain opacity-50  p-5"/>
+      </div> */}
+      {/* option 2 */}
+      <div className="absolute top-[-1vw] right-[2vw]   size-[18vw] hidden lg:block ">
+        <Image src="/images/icons/logo.png" alt="logo" fill  className="object-contain    p-5"/>
+      </div>
       <div className="max-w-8xl mx-auto container py-16 relative z-[2]">
         <div>
           <div className="flex items-left flex-col px-4">
-            <a data-aos="fade-up" href="/">
-              <h2 className="text-4xl lg:text-5xl font-extrabold text-left leading-tight lg:w-7/12 md:w-9/12 pt-4">
-                What We Stand For
+            <div data-aos="fade-up" href="/">
+              <h2 className="text-2xl lg:text-[2.7vw]  font-extrabold text-left leading-[1.5] lg:w-[85%]  pt-4">
+              WHAT WE STAND FOR IS ALL ABOUT FAMILY AND THAT"S WHAT MAMA BOB"S  IS ALL ABOUT
               </h2>
-            </a>
+            </div>
             <p
               data-aos="fade-up"
-              className="text-md text-left mt-14  leading-normal lg:w-7/12 md:w-9/12"
+              className="text-md text-left mt-6  leading-normal lg:w-[85%] Capitalize "
             >
-              Convallis turpis erat tempus, viverra aliquet. Nullam viverra nam
-              auctor sit ipsum malesuada a, duis volutpat. Convallis turpis erat
-              tempus, viverra aliquet.
+              THE RIGHT TO BE WHO YOU ARE! TO SAY WHAT YOU FEEL! BELIEVE WHAT YOU WANT TO BELIEVE! AND GIGGLE AT ABSOLUTELY ANYTHING THAT TICKLES YOUR FANCY
             </p>
           </div>
           <div className="mt-20 flex gap-12 flex-wrap justify-between px-4">

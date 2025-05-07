@@ -4,7 +4,8 @@ import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/utils/products";
-
+import LogoMarquee from "../common/LogoMarquee";
+import FeaturedProducts from "../home/featured-products/FeaturedProducts";
 export default function ShopPage() {
   const [cart, setCart] = useState([]);
 
@@ -13,7 +14,13 @@ export default function ShopPage() {
   };
 
   return (
-    <section className="min-h-screen bg-white text-black py1 pt-[220px] myContainer">
+    <>
+    <div className="lg:pt-[11.4583333333vw] sm:pt-[120px] pt-[75px]">
+      <LogoMarquee/>
+
+    </div>
+    <FeaturedProducts/>
+    {/* <section className="min-h-screen bg-white text-black lg:pb-[11.4583333333vw] sm:pb-[120px] pb-[75px] myContainer">
       <div className="flex justify-between items-center border-b border-gray-700 pb-4">
         <h1 className="text-2xl font-bold">Minimalist Shop</h1>
         <Link
@@ -55,6 +62,7 @@ export default function ShopPage() {
           </div>
         ))}
       </div>
-    </section>
+    </section> */}
+    </>
   );
 }

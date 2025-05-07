@@ -4,17 +4,20 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col">
-      <div className="bg-black">
-        <div className="myContainer lg:py-[6.25vw] py-12 flex flex-col items-start justify-start xl:justify-between xl:space-x-8 xl:flex-row">
-          <Link
+    <footer className="flex flex-col ">
+      <div className="bg-black relative">
+      <div className="absolute top-0 left-0 w-full h-full ">
+        <Image src="/images/icons/logo.png" alt="logo" fill  className="object-contain opacity-50  p-5"/>
+      </div>
+        <div className="myContainer lg:py-[6.25vw] py-12 flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row">
+          {/* <Link
             href={"/"}
             aria-label="Home. logo"
             role="img"
             className="relative lg:size-[22.2222222222vh] sm:size-[150px] size-[100px]"
           >
             <Image fill src="/images/icons/logo.png" alt="logo" />
-          </Link>
+          </Link> */}
           <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">
             <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
               <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
