@@ -71,7 +71,7 @@ const FeaturedProducts = () => {
                 className="relative flex flex-col group overflow-hidden"
               >
                 <img
-                  src="https://i.ibb.co/4JJnHpc/carousel-3.png"
+                  src="/images/home/featured-products/3.png"
                   alt="black guy"
                   className="w-full group-hover:scale-[1.04] transition-all duration-500"
                 />
