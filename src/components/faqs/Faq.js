@@ -2,18 +2,20 @@ import React from "react";
 
 const Faq = ({ faq, index, toggleFAQ, openIndex, contentRefs, heights }) => {
   const isOpen = openIndex === index;
-  
+
   return (
     <div className="group border border-gray-400 p-4 rounded-2xl">
       <button
-        className="lg:text-2xl text-lg w-full text-left font-semibold text-black focus:outline-none flex justify-between items-start gap-2"
+        className="lg:text-2xl text-lg w-full text-left font-semibold text-white focus:outline-none flex justify-between items-start gap-2"
         onClick={() => toggleFAQ(index)}
         aria-expanded={isOpen}
       >
         <span>{faq.question}</span>
         <span
           className={`transform transition-transform duration-300 flex-shrink-0 ${
-            isOpen ? "rotate-180 text-gray-400" : "rotate-0"
+            isOpen
+              ? "rotate-180 text-white"
+              : "rotate-0 text-gray-400 lg:group-hover:text-white"
           } lg:group-hover:text-gray-400`}
         >
           ▼
@@ -25,13 +27,15 @@ const Faq = ({ faq, index, toggleFAQ, openIndex, contentRefs, heights }) => {
           isOpen ? "mt-2" : "mt-0"
         }`}
         style={{
-          height: isOpen ? `${heights[index] || 'auto'}px` : "0px",
+          height: isOpen ? `${heights[index] || "auto"}px` : "0px",
           opacity: isOpen ? 1 : 0,
           visibility: isOpen ? "visible" : "hidden",
         }}
       >
         <div className="mb-1">
-          <p className="text-gray-700 pt-2 lg:text-lg whitespace-pre-line">{faq.answer}</p>
+          <p className="text-white pt-2 lg:text-lg whitespace-pre-line">
+            {faq.answer}
+          </p>
         </div>
       </div>
     </div>

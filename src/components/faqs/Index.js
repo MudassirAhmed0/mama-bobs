@@ -6,9 +6,10 @@ const FaqsPage = () => {
   const faqs = [
     {
       question: " What are dangleberries?",
-      answer: "DANGLEBERRIE - bead of self produced  ecsrement that has attached itself to your hairy undercarriage! And dingle dangles in that region hence DANGLEBERRIE!!",
+      answer:
+        "DANGLEBERRIE - bead of self produced  ecsrement that has attached itself to your hairy undercarriage! And dingle dangles in that region hence DANGLEBERRIE!!",
     },
-    
+
     {
       question: "What is our return policy?",
       answer: "You can return any product within 30 days of purchase.",
@@ -19,9 +20,10 @@ const FaqsPage = () => {
     },
     {
       question: " What is feltching and explanation?",
-      answer: "A sexual act term commonly used in the LGBTQIA+ community. It is in layman's terms when one homosexual male ejaculates in another homosexual males nether region orifice and then make the highly dubious decision to go and suck his deposit back out again!",
+      answer:
+        "A sexual act term commonly used in the LGBTQIA+ community. It is in layman's terms when one homosexual male ejaculates in another homosexual males nether region orifice and then make the highly dubious decision to go and suck his deposit back out again!",
     },
-    
+
     {
       question: "How can I track my order?",
       answer: "You will receive a tracking link once your order is shipped.",
@@ -36,7 +38,8 @@ const FaqsPage = () => {
     },
     {
       question: "What is the meaning of life?",
-      answer: " The aim is to secure yourself a life of peace, contentment and love by living with positivity and above all in any situation- BE KIND! BE KIND! BE KIND!",
+      answer:
+        " The aim is to secure yourself a life of peace, contentment and love by living with positivity and above all in any situation- BE KIND! BE KIND! BE KIND!",
     },
     {
       question: "Do you offer discounts for bulk orders?",
@@ -82,16 +85,16 @@ const FaqsPage = () => {
   // Calculate heights on component mount
   useEffect(() => {
     calculateHeights();
-    
+
     // Recalculate when window is resized
-    window.addEventListener('resize', calculateHeights);
-    
+    window.addEventListener("resize", calculateHeights);
+
     // Cleanup listener on unmount
     return () => {
-      window.removeEventListener('resize', calculateHeights);
+      window.removeEventListener("resize", calculateHeights);
     };
   }, []);
-  
+
   // Recalculate heights when open index changes
   useEffect(() => {
     calculateHeights();
@@ -102,11 +105,9 @@ const FaqsPage = () => {
   };
 
   return (
-    <section className="lg:py1 pt-40 sm:pt-[240px] lg:pb-24 pb-24">
+    <section className="lg:mt-[7.4583333333vw] lg:pt-20 mt-40 sm:mt-[240px] lg:pb-24 pb-24 bg-black border-b border-white">
       <div className="myContainer lg:w-2/4">
-        <h2 className="text60 text-foreground text-center">
-        WHAT THE FAQ!!
-        </h2>
+        <h2 className="text60 text-white text-center">WHAT THE FAQ!!</h2>
         <div className="mt-12 flex flex-col gap-8 w-full">
           {faqs.map((faq, index) => (
             <Faq
