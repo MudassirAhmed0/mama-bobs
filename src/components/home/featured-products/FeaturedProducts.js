@@ -4,10 +4,10 @@ import React from "react";
 const FeaturedProducts = () => {
   return (
     <div className="2xl:mx-auto 2xl:container">
-      <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8">
+      <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8 lg:pt-0">
         <h1
           data-aos="fade-up"
-          className="lg:text-4xl text-3xl font-semibold text-black text-center"
+          className="lg:text-[3.5rem] text-3xl font-semibold text-black text-center"
         >
           Quality Apparel with an Attitude
         </h1>

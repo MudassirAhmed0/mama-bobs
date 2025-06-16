@@ -79,7 +79,7 @@ const Header = () => {
       />
       <nav className="w-full borde r-b border-black lg:py-[1.66666666667vh] py-[20px]">
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center gap-x-4 flex-col">
+          <div className="flex items-center gap-x-4 ">
             <Link
               href={"/"}
               aria-label="Home. logo"
@@ -88,8 +88,8 @@ const Header = () => {
             >
               <Image fill src="/images/icons/marquee-logo-1.png" alt="logo" />
             </Link>
-          <span className="lg:text-[1.25vw] font-medium">
-          MAMA BOBS's IS <span className="text-[1.8vw] font-bold">HOME</span>
+          <span className="text-[14px] lg:text-[1.25vw] font-medium">
+          MAMA BOBS's IS <span className="text-[18px] lg:text-[1.8vw] font-bold">HOME</span>
           </span>
           </div>
           <div>
@@ -177,19 +177,19 @@ const Header = () => {
           <div className="flex gap-x-3 lg:gap-x-4 items-stretch">
             <LuSearch
               onClick={() => handleSearchActive(true)}
-              className="text-foreground cursor-pointer sm:w-6 h-6 size-5 my-auto"
+              className="text-foreground cursor-pointer sm:w-6 h-6 size-5 my-auto lg:flex hidden"
             />
-            <div className="flex items-center relative z-[-1]">
+            <div className="lg:flex hidden items-center relative z-[-1]">
               <span className="w-[1px] min-w-[1px] h-[70%] bg-foreground block opacity-70"></span>
             </div>{" "}
-            <Link href={"/cart"} className="flex items-center gap-2">
+            <Link href={"/cart"} className="lg:flex hidden items-center gap-2">
               <BsCart2 className="text-foreground cursor-pointer sm:w-6 h-6 size-5" />
 
               <span className="bg-red-500 text-white text-xs px-1 rounded-full">
                 0
               </span>
             </Link>
-            <div className="lg:hidden flex items-center relative z-[-1]">
+            <div className="lg: hidden  items-center relative z-[-1]">
               <span className="w-[1px] min-w-[1px] h-[70%] bg-foreground block opacity-70"></span>
             </div>{" "}
             <RiMenu3Fill
