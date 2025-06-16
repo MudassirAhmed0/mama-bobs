@@ -26,7 +26,7 @@ const navLinks = [
     anchor:true
   },
   {
-    title: "Faqs",
+    title: "WHAT THE FAQ",
     link: "/faqs",
   },
   {
@@ -72,21 +72,26 @@ const Header = () => {
     }
   }
   return (
-    <header className="absolute z-[9] top-0 left-0 w-full">
+    <header className="absolute z-[9] top-0 left-0 w-full bg-white">
       <SearchBar
         handleSearchActive={handleSearchActive}
         activeSearch={activeSearch}
       />
-      <nav className="w-full border-b border-black lg:py-[1.66666666667vh] py-[20px]">
+      <nav className="w-full borde r-b border-black lg:py-[1.66666666667vh] py-[20px]">
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <Link
-            href={"/"}
-            aria-label="Home. logo"
-            role="img"
-            className="relative lg:size-[13.8888888889vh] sm:size-[150px] size-[70px]"
-          >
-            <Image fill src="/images/icons/logo.png" alt="logo" />
-          </Link>
+          <div className="flex items-center gap-x-4 flex-col">
+            <Link
+              href={"/"}
+              aria-label="Home. logo"
+              role="img"
+              className="relative lg:min-h-[13.8vh] lg:min-w-[13.8vh] lg:size-[13.8888888889vh] sm:size-[150px] size-[70px]"
+            >
+              <Image fill src="/images/icons/marquee-logo-1.png" alt="logo" />
+            </Link>
+          <span className="lg:text-[1.25vw] font-medium">
+          MAMA BOBS's IS <span className="text-[1.8vw] font-bold">HOME</span>
+          </span>
+          </div>
           <div>
             {/* <button
               onClick={() => setShow(!show)}

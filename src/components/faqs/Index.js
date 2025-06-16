@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Faq from "./Faq";
+import LogoBackground from "../common/LogoBackground";
 
 const FaqsPage = () => {
   const faqs = [
@@ -105,7 +106,11 @@ const FaqsPage = () => {
   };
 
   return (
-    <section className="lg:mt-[7.4583333333vw] lg:pt-20 mt-40 sm:mt-[240px] lg:pb-24 pb-24 bg-black border-b border-white">
+    <section
+     
+      className="lg:mt-[10.4583333333vw] lg:pt-20 mt-40 sm:mt-[240px] lg:pb-24 pb-24 bg-black border-b border-white"
+    >
+      <LogoBackground/>
       <div className="myContainer lg:w-2/4">
         <h2 className="text60 text-white text-center">WHAT THE FAQ!!</h2>
         <div className="mt-12 flex flex-col gap-8 w-full">

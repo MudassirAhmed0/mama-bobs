@@ -6,6 +6,11 @@ export default function About() {
       id="about"
       className="py1 lg:pb-[6.25vw] bg-[#121313] relative overflow-hidden"
     >
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="animate-marquee whitespace-nowrap text-[120px] font-bold text-white/20">
+          100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort •
+        </div>
+      </div>
       <img
         src="/images/home/about/surfboard.png"
         alt="surfboard"

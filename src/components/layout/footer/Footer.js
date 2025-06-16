@@ -18,7 +18,7 @@ const Footer = () => {
           >
             <Image fill src="/images/icons/logo.png" alt="logo" />
           </Link> */}
-          <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">
+          <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8 ">
             <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
               <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
                 Community
@@ -82,8 +82,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+<div className="bg-white z-[2] relative">
 
-      <div className="mx-auto container my-16 xl:px-20 lg:px-12 sm:px-6 px-4 bg-white relative z-[2]">
+      <div className="mx-auto container my-16 xl:px-20 lg:px-12 sm:px-6 px-4 bg-white relative z-[2] ">
         <div className="md:flex items-center justify-between">
           <div className="flex items-center">
             <div className="border-l border-gray-800 ml-2 pl-2">
@@ -175,6 +176,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+</div>
     </footer>
   );
 };

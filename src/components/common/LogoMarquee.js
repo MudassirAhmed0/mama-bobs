@@ -39,7 +39,7 @@ const LogoMarquee = () => {
       justifyContent: "space-between",
     },
     logoWrapper: {
-      width: "calc(100% / 6)",
+      width: "calc(100% / 4)",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -47,7 +47,7 @@ const LogoMarquee = () => {
       transition: "all 0.3s ease",
     },
     logo: {
-      height: "15rem",
+      height: "19rem",
       objectFit: "contain",
       filter: "grayscale(30%)",
       transition: "filter 0.3s ease, transform 0.3s ease",

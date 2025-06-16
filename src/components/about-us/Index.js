@@ -1,18 +1,22 @@
+ 
+import LogoBackground from "../common/LogoBackground";
 import { NewsLetterBox } from "../common/NewsLetterBox";
 import WhyChooseUs from "../common/WhyChooseUs";
 
 const AboutUsPage = () => {
   return (
-    <div className="py-20 my-20 mx-auto  myContainer">
-      <div className="lg:mt-10 mt-10 sm:mt-32 mb-20 flex flex-wrap justify-center items-center gap-8 lg:gap-12 w-full">
+    <div className="py-48  bg-black">
+      <LogoBackground/>
+      <div className="mx-auto  myContainer relative">
+      <div className="lg:mt-10 mt-10 sm:mt-32 mb-20 flex flex-wrap justify-center items-center gap-8 lg:gap-12 w-full relative ">
         <img
           className="w-full lg:w-[450px] object-cover rounded-lg shadow-lg"
           src={"/images/home/gallery/5.jpg"}
           alt=""
         />
         <div className="lg:w-2/4 w-full">
-          <h2 className="text60 text-gray-800">about us</h2>
-          <div className="flex flex-col justify-center gap-4 lg:gap-6 mt-4 lg:mt-6 text-gray-600">
+          <h2 className="text60 text-white">about us</h2>
+          <div className="flex flex-col justify-center gap-4 lg:gap-6 mt-4 lg:mt-6 text-white">
             <p>
               MAMA BOBS was forged in the crucible of the school of hard knocks,
               the college of getting kneed in the rattlers and the university of
@@ -28,7 +32,7 @@ const AboutUsPage = () => {
             </p>
 
             <div className="flex flex-col gap-2">
-              <b className="text-gray-800">Our Mission</b>
+              <b className="text-white">Our Mission</b>
               <p>
                 Our mission at MAMA BOBS is to bring “Good old fashioned bad
                 taste back to the masses!” To return to a time and place where
@@ -49,6 +53,8 @@ const AboutUsPage = () => {
 
       <WhyChooseUs />
       {/* <NewsLetterBox /> */}
+
+      </div>
     </div>
   );
 };
