@@ -7,16 +7,16 @@ export default function About() {
       className="py1 lg:pb-[6.25vw] bg-[#121313] relative overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden opacity-20">
-        <div className="animate-marquee whitespace-nowrap text-[120px] font-bold text-white/20">
-          100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort •
+        <div className="animate-marquee whitespace-nowrap text-[50vh] font-bold text-white/20 absolute top-[28%] transform translate-y-[-50%]">
+          100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort •
         </div>
       </div>
-      <img
+      {/* <img
         src="/images/home/about/surfboard.png"
         alt="surfboard"
         className="absolute bottom-0 right-0 w-[40vw] sm:w-[30vw] lg:w-[20vw] scale-x-[-1]"
-      />
-      <div className="border20 relative z-[2] myContainer bg-black bg-opacity-[0.7] lg:p-[4.16666666667vw] sm:p-[40px] sm:py-[60px] py-[50px] p-[30px] flex flex-wrap lg:gap-[2.5vw] sm:gap-[30px] gap-[20px]">
+      /> */}
+      <div className="border20 relative z-[2] myContainer bg-black bg-opacity-[0] [0.7] lg:p-[4.16666666667vw] sm:p-[40px] sm:py-[60px] py-[50px] p-[30px] flex flex-wrap lg:gap-[2.5vw] sm:gap-[30px] gap-[20px]">
         <div
           data-aos="fade"
           className="border20 overflow-hidden lg:w-[36.4583333333vw] lg:h-[80vh] sm:h-[400px] h-[300px] lg:mt-[-11vw]"
@@ -32,7 +32,7 @@ export default function About() {
             Born from the School of Hard Knocks.
           </h2>
           <p data-aos="fade-up" className="lg:text24 mtext18 mt30">
-          We at MAMA Bobs are Exploding Woke Culture because we have a degree in life that was awarded after it had been earned in the school of hard knocks the college of getting need in the rattlars and in the university of getting crap kick out of you.
+          We at MAMA Bobs are Exploding Woke Culture because we have a degree in life that was awarded after it had been earned in the school of hard knocks the college of getting kneed in the rattlars and in the university of getting crap kicked out of you.
           </p>
         </div>
       </div>

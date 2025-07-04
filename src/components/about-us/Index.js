@@ -5,7 +5,7 @@ import WhyChooseUs from "../common/WhyChooseUs";
 
 const AboutUsPage = () => {
   return (
-    <div className="py-48  bg-black">
+    <div className="pt-48  pb-24 lg:pb-10 bg-black">
       <LogoBackground/>
       <div className="mx-auto  myContainer relative">
       <div className="lg:mt-10 mt-10 sm:mt-32 mb-20 flex flex-wrap justify-center items-center gap-8 lg:gap-12 w-full relative ">

@@ -36,9 +36,10 @@ const brandValues = [
 export default function Values() {
   return (
     <section className="relative text-white pb-[120px]">
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-1 z-[2] ">
-        <div className="animate-marquee whitespace-nowrap text-[120px] font-bold text-white/20">
-          100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort •
+      <div className="absolute top-[15%] left-0 w-full overflow-hidden opacity-1 z-[2] h-full  ">
+        <div className="animate-marquee whitespace-nowrap text-[50vh] font-bold text-white/20 absolute" >
+        100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort • 100% Cotton • 100% Natural • 100% Quality • 100% Comfort •
+
         </div>
       </div>
       {/* option 1 */}

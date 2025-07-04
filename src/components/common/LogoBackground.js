@@ -4,7 +4,7 @@ const LogoBackground = () => {
   return (
     <div style={{
         backgroundImage: "url(/images/icons/bg-logo.png)",
-        backgroundSize: "20vw",
+        backgroundSize: "40vw",
         backgroundPosition: "center",
         backgroundRepeat: "repeat",
         

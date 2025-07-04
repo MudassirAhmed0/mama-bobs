@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React from "react";
 
-const FeaturedProducts = () => {
+const FeaturedProducts = ({fromHome}) => {
   return (
     <div className="2xl:mx-auto 2xl:container">
-      <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8 lg:pt-0">
+      <div className={`lg:px-20 md:px-6 px-4 md:py-12 py-8 ${fromHome?'lg:py-[6.25vw]': 'lg:pt-0'}`}>
         <h1
           data-aos="fade-up"
           className="lg:text-[3.5rem] text-3xl font-semibold text-black text-center"
