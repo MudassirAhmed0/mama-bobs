@@ -1,11 +1,14 @@
+import Image from "next/image";
 import React from "react";
 function Hero() {
   return (
     <div className="pb-32 lg:pb-12 overflow-y-hidden min-h-[100vh] flex items-end justify-center relative">
-      <div className="size-full absolute inset-0">
-        <span className="bg-gradient-to-b from-foreground to-background size-full absolute bottom-0 h-[50%] mix-blend-darken -scale-y-100"></span>
-        <span className="bg-black size-full absolute inset-0 mix-blend-color"></span>
-        <video
+      <div className="size-full absolute inset-0 ">
+        <Image src="/images/contact-us/collage.png" alt="hero" fill className="object-cover" />
+        <span className="bg-black size-full absolute bg-[#000000] opacity-20"></span>
+        {/* <span className="bg-gradient-to-b from-foreground to-background size-full absolute bottom-0 h-[50%] mix-blend-darken -scale-y-100"></span>
+        <span className="bg-black size-full absolute inset-0 mix-blend-color"></span> */}
+        {/* <video
           muted
           loop
           autoPlay
@@ -14,7 +17,7 @@ function Hero() {
           preload="auto"
           loading="lazy"
           src="/videos/home-hero.mp4"
-        ></video>
+        ></video> */}
       </div>
       <div className="relative z-[2]">
         <div className="container mx-auto flex flex-col items-center py-12 sm:py-[16.6666666667vh]">
@@ -23,15 +26,15 @@ function Hero() {
               data-aos="fade-up"
               className="text-4xl sm:text-4xl md:text-6xl xl:text-7xl text-center text-white font-black sm:leading-tight mb-5  "
             >
-              Explode Woke!! <br/> <span className="text-[#a16207]">w' Mama Bob's!</span>
+              Explode Woke!! <br/> <span style={{textShadow: "2px 2px #fff8f8"}} className="text-[#a16207]">w' Mama Bob's!</span>
             </h1>
             <h2
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-3xl sm:text-2xl md:text-4xl xl:text-5xl text-center text-black font-bold sm:leading-7"
+              className="text-3xl sm:text-2xl md:text-4xl xl:text-5xl text-center text-white font-bold sm:leading-7"
             >
               Bringing Good {""}
-              <span className="text-[#a16207]">Old-Fashioned</span>
+              <span  style={{textShadow: "2px 2px #fff8f8"}} className="text-[#a16207]">Old-Fashioned</span>
               {""} Bad Taste Back to the Masses!
             </h2>
           </div>
