@@ -9,9 +9,9 @@ const Memroboblia =({children,classes,containerClasses})=>{
     <Image src={"/images/contact-us/collage.png"} alt="contact-us" fill className="object-cover"/>
   </div>
   <div className={` z-[2] relative flex ${containerClasses}`}>
-    <div className="absolute top-0 left-0 w-full h-full bg-white opacity-80">
+    {children &&<div className="absolute top-0 left-0 w-full h-full bg-white opacity-80">
       
-    </div>
+    </div>}
   {children}
   </div>
 </section>
@@ -19,9 +19,9 @@ const Memroboblia =({children,classes,containerClasses})=>{
 
 const ContactFirstSection=()=>{
   return(
-   <Memroboblia classes={'flex lg:justify-end lg:items-end justify-center items-center'} containerClasses={"lg:w-[30vw] p-[20px] mt-[50px] lg:mt-0 lg:p-[2vw] lg:mb-[5vw] lg:mr-[5vw] mx-auto lg:ml-0 ml-auto "}>
+   <Memroboblia classes={'flex lg:justify-end lg:items-end justify-center items-center'} containerClasses={"lg:w-[30vw] p-[20px] lg:p-[2vw]  mt-[50px] lg:mt-0 lg:mb-[5vw] lg:mr-[5vw] mx-auto lg:ml-0 ml-auto "}>
     
-    <div className="flex flex-col justify-center items-start gap-6 relative z-[2]">
+    {/* <div className="flex flex-col justify-center items-start gap-6 relative z-[2]">
           <p className="font-semibold text-xl text-black">Our Store</p>
           <Link href={"/"} target="_blank" className=" text-gray-500">
             54709 Willms Station <br /> Suite 350, Washington, USA
@@ -45,7 +45,7 @@ const ContactFirstSection=()=>{
           <button className="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500">
             Explore Jobs
           </button>
-        </div>
+        </div> */}
    
    </Memroboblia>
   )
@@ -54,9 +54,50 @@ const ContactFirstSection=()=>{
 
 const ContactUsSecondSection=()=>{
   return(
-   <section className='relative lg:min-h-[70vh] min-h-[50vh] bg-black'>
+   <section className='relative lg:min-h-[70vh] min-h-[50vh] bg-black flex items-center'>
     <LogoBackground/>
-    <div className="myContainer"></div>
+    <div className="myContainer flex justify-between lg:flex-row flex-col gap-[45px] lg:gap-0  py-[45px] lg:py-[10vw]">
+    <div className="  relative z-[2] lg:w-[65%]  p-[20px] lg:p-[2vw]">
+    <div className="absolute top-0 left-0 w-full h-full bg-white opacity-40">
+      
+      </div>
+      <div className="flex flex-col justify-center items-start gap-6 relative h-full  ">
+
+        <p className="font-semibold lg:text-[2.5vw] text-[26px] leading-[1.7] text-white  ">GIVE US YOUR IDEAS, INSPIRATIONS, STORY'S, QUOTES, JOKE'S AND DREAM'S AND THE CREME DE LA CREME IN PRINT BEFORE YOU CAN SAY "MAMA BOB'S"!!</p>
+      </div>
+        
+      </div>
+    <div className="  relative z-[2] lg:w-[30vw] p-[20px] lg:p-[2vw] ">
+    <div className="absolute top-0 left-0 w-full h-full bg-white opacity-40">
+      
+      </div>
+         <div className="flex flex-col justify-center items-start gap-6 relative"> 
+         <p className="font-semibold text-xl text-white">Our Store</p>
+          <Link href={"/"} target="_blank" className=" text-white">
+            54709 Willms Station <br /> Suite 350, Washington, USA
+          </Link>
+          <div className="flex flex-col">
+            <Link href={"tel:(415) 555-0132"} className=" text-white">
+              Tel: (415) 555-0132
+            </Link>
+            <Link href={"mailto:admin@mamabobs.com"} className=" text-white">
+              Email: admin@mamabobs.com
+            </Link>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-semibold text-xl text-white">
+              Careers at Mama Bobs
+            </p>
+            <p className=" text-white">
+              Learn more about our teams and job openings.
+            </p>
+          </div>
+          <button className="border border-white px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500 text-white">
+            Explore Jobs
+          </button>
+         </div>
+        </div>
+    </div>
    </section>
   )
 }
@@ -64,10 +105,10 @@ const ContactUsSecondSection=()=>{
 const ContactLastSection=()=>{
   return(
     <Memroboblia classes={'flex justify-center items-center'} containerClasses={"lg:w-[70vw] w-[90vw] lg:p-[2vw] p-[20px]  "}>
-      <div className="flex flex-col justify-center items-start gap-6 relative z-[2]">
+      {/* <div className="flex flex-col justify-center items-start gap-6 relative z-[2]">
         <p className="font-semibold lg:text-[3vw] text-[26px] leading-[1.8] text-black text-center ">GIVE US YOUR IDEAS, INSPIRATIONS, STORY'S, QUOTES, JOKE'S AND DREAM'S AND THE CREME DE LA CREME IN PRINT BEFORE YOU CAN SAY "MAMA BOB'S"!!</p>
         
-      </div>
+      </div> */}
     </Memroboblia>
   )
 } 
