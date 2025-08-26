@@ -32,7 +32,7 @@ export default function About() {
             Born from the School of Hard Knocks.
           </h2>
           <p data-aos="fade-up" className="lg:text24 mtext18 mt30">
-          We at MAMA Bobs are Exploding Woke Culture because we have a degree in life that was awarded after it had been earned in the school of hard knocks the college of getting kneed in the rattlars and in the university of getting crap kicked out of you.
+          WE AT MAMA BOBS ARE BLOWING UP WOKE CULTURE BECAUSE WE’VE GOT A DEGREE IN LIFE-EARNED THE HARD WAY AT THE SCHOOL OF HARD KNOCKS, THE COLLEGE OF GETTING KNEED IN THE RATTLERS AND THE UNIVERSITY OF HAVIN THE CRAP KICKED OUT OF YOU!
           </p>
         </div>
       </div>

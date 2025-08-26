@@ -68,7 +68,8 @@ const TeeSelector = () => {
       {!selectedTee ? (
         <div className="container mx-auto px-4 py-8">
 
-          <h1 className="text-3xl font-bold text-center mb-8">Choose Your Shirt You Want to Design</h1>
+          {/* <h1 className="text-3xl font-bold text-center mb-8">Choose Your Shirt You Want to Design</h1> */}
+          <h1 className="text-7xl font-bold text-center mb-8">Coming to a wardrobe near you</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {teeData.map((tee) => (
               <TeeCard key={tee.id} tee={tee} onSelect={handleSelectTee} />

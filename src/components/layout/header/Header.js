@@ -21,7 +21,7 @@ const navLinks = [
     link: "/shop",
   },
   {
-    title: "Design your Tee",
+    title: "Top 20",
     link: "/design-your-tee",
     anchor:true
   },
