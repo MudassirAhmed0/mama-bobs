@@ -1,16 +1,33 @@
 import LogoBackground from "@/components/common/LogoBackground";
+import Link from "next/link";
 import React from "react";
 
 const Cta = () => {
   return (
     <div data-aos="fade" className="myContainer md:my-12 my-9 ">
-      <div className="relative flex flex-row justify-between items-center bg-black sm:rounded-r-full bg-black" >
-      <LogoBackground/>
-        <div className="-mt-12 sm:-mt-0 w-8/12 sm:w-7/12 ml-6 md:ml-12 flex-col flex justify-start items-start">
+      <div className="relative flex flex-row justify-between items-center bg-black sm:rounded-r-full bg-black">
+        <LogoBackground />
+        <div className="-mt-12 sm:-mt-0 w-8/12 sm:w-7/12 ml-6 md:ml-12 flex-col flex justify-start items-start relative z-[2]">
           <div>
-            <p className="text-3xl lg:text-4xl font-semibold leading-9 lg:leading-10 text-white">
-            GIVE US YOUR IDEAS, INSPIRATIONS, STORY'S, QUOTES, JOKE'S AND DREAM'S AND THE CREME DE LA CREME IN PRINT BEFORE YOU CAN SAY "MAMA BOB'S"!!
+            <p className="text-3xl lg:text-4xl uppercase font-semibold leading-9 lg:leading-10 text-white">
+              will be IN PRINT BEFORE YOU CAN SAY "MAMA BOB'S"!!
             </p>
+            <div className="flex flex-col gap-6 mt-6">
+              <Link href={"/"} target="_blank" className=" text-white">
+                54709 Willms Station <br /> Suite 350, Washington, USA
+              </Link>
+              <div className="flex flex-col">
+                <Link href={"tel:(415) 555-0132"} className=" text-white">
+                  Tel: (415) 555-0132
+                </Link>
+                <Link
+                  href={"mailto:admin@mamabobs.com"}
+                  className=" text-white"
+                >
+                  Email: admin@mamabobs.com
+                </Link>
+              </div>
+            </div>
           </div>
           {/* <div className="mt-12 md:mt-20 lg:mt-16">
             <button className="hover:text-black hover:bg-gray-200 focus:outline-none rounded-sm transition duration-150 absolute bottom-6 sm:static w-72 text-base lg:text-xl font-medium leading-4 lg:leading-5 text-center text-gray-900 sm:w-44 h-12 bg-white flex justify-center items-center pb-1">
