@@ -3,9 +3,9 @@ import { NewsLetterBox } from "../common/NewsLetterBox";
 import Image from "next/image";
 import LogoBackground from "../common/LogoBackground";
 
-const Memroboblia = ({ children, classes, containerClasses }) => {
+const Memroboblia = ({ classes, containerClasses }) => {
   return (
-    <section className={`min-h-[100vh] relative ${classes} z-[2]`}>
+    <section className={`min-h-[100vh] relative ${classes} py-10 z-[2]`}>
       <div className="absolute top-0 left-0 w-full h-full bg-black/50">
         <Image
           src={"/images/contact-us/collage.png"}
@@ -14,11 +14,33 @@ const Memroboblia = ({ children, classes, containerClasses }) => {
           className="object-cover"
         />
       </div>
-      <div className={` z-[2] relative flex ${containerClasses}`}>
-        {children && (
-          <div className="absolute top-0 left-0 w-full h-full bg-white opacity-80"></div>
-        )}
-        {children}
+      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+      <div
+        className={`myContainer z-[2] relative flex flex-col gap-y-4 justify-center items-center ${containerClasses}`}
+      >
+        <Link
+          href={"/"}
+          aria-label="Home. logo"
+          role="img"
+          className="relative block lg:min-h-[13.8vh] lg:min-w-[13.8vh] lg:size-[20vw] sm:size-[250px] size-[180px] brightness-150"
+        >
+          <Image fill src="/images/icons/marquee-logo-1.png" alt="logo" />
+        </Link>
+        <div className="lg:size-[10vw] sm:size-[125px] size-[90px] text-white">
+          <svg
+            className="size-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx={12} cy={12} r={4} />
+            <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8" />
+          </svg>
+        </div>
       </div>
     </section>
   );
@@ -28,9 +50,6 @@ const ContactFirstSection = () => {
   return (
     <Memroboblia
       classes={"flex lg:justify-end lg:items-end justify-center items-center"}
-      containerClasses={
-        "lg:w-[30vw] p-[20px] lg:p-[2vw]  mt-[50px] lg:mt-0 lg:mb-[5vw] lg:mr-[5vw] mx-auto lg:ml-0 ml-auto "
-      }
     >
       {/* <div className="flex flex-col justify-center items-start gap-6 relative z-[2]">
           <p className="font-semibold text-xl text-black">Our Store</p>
@@ -65,34 +84,21 @@ const ContactUsSecondSection = () => {
   return (
     <section className="relative py-[45px] lg:py-[10vw] lg:min-h-[70vh] min-h-[50vh] bg-black flex flex-col items-center">
       <LogoBackground />
-      <div className="myContainer flex justify-center mb-10 relative z-[2]">
-        <Link
-          href={"/"}
-          aria-label="Home. logo"
-          role="img"
-          className="relative block lg:min-h-[13.8vh] lg:min-w-[13.8vh] lg:size-[20vw] sm:size-[250px] size-[180px] brightness-150"
-        >
-          <Image fill src="/images/icons/marquee-logo-1.png" alt="logo" />
-        </Link>
-      </div>
+
       <div className="myContainer flex justify-between lg:flex-row flex-col gap-[45px] lg:gap-0">
         <div className="  relative z-[2] lg:w-[65%]  p-[20px] lg:p-[2vw]">
-          <div className="absolute top-0 left-0 w-full h-full bg-white opacity-40"></div>
           <div className="flex flex-col justify-center items-start gap-6 relative h-full  ">
             <p className="font-semibold lg:text-[2.5vw] text-[26px] leading-[1.7] text-white  ">
               GIVE US YOUR IDEAS, INSPIRATIONS, STORY'S, QUOTES, JOKE'S AND
-              DREAM'S AND THE CREME DE LA CREME IN PRINT BEFORE YOU CAN SAY
-              "MAMA BOB'S"!!
+              DREAM'S AND THE CREME DE LA CREME WILL BE IN PRINT BEFORE YOU CAN
+              SAY "MAMA BOB'S"!!
             </p>
           </div>
         </div>
         <div className="  relative z-[2] lg:w-[30vw] p-[20px] lg:p-[2vw] ">
-          <div className="absolute top-0 left-0 w-full h-full bg-white opacity-40"></div>
           <div className="flex flex-col justify-center items-start gap-6 relative">
-            <p className="font-semibold text-xl text-white">Our Store</p>
-            <Link href={"/"} target="_blank" className=" text-white">
-              54709 Willms Station <br /> Suite 350, Washington, USA
-            </Link>
+            <p className="font-semibold text-xl text-white">Contact Us</p>
+
             <div className="flex flex-col">
               <Link href={"tel:(415) 555-0132"} className=" text-white">
                 Tel: (415) 555-0132
@@ -100,18 +106,15 @@ const ContactUsSecondSection = () => {
               <Link href={"mailto:admin@mamabobs.com"} className=" text-white">
                 Email: admin@mamabobs.com
               </Link>
+              <Link
+                href="https://maps.google.com/?q=P.O.+Box+1234,+New+York,+NY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white"
+              >
+                P.O. Box 1234, New York, NY
+              </Link>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="font-semibold text-xl text-white">
-                Careers at Mama Bobs
-              </p>
-              <p className=" text-white">
-                Learn more about our teams and job openings.
-              </p>
-            </div>
-            <button className="border border-white px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500 text-white">
-              Explore Jobs
-            </button>
           </div>
         </div>
       </div>
@@ -123,7 +126,7 @@ const ContactLastSection = () => {
   return (
     <Memroboblia
       classes={"flex justify-center items-center"}
-      containerClasses={"lg:w-[70vw] w-[90vw] lg:p-[2vw] p-[20px]  "}
+      containerClasses={"flex-col-reverse"}
     >
       {/* <div className="flex flex-col justify-center items-start gap-6 relative z-[2]">
         <p className="font-semibold lg:text-[3vw] text-[26px] leading-[1.8] text-black text-center ">GIVE US YOUR IDEAS, INSPIRATIONS, STORY'S, QUOTES, JOKE'S AND DREAM'S AND THE CREME DE LA CREME IN PRINT BEFORE YOU CAN SAY "MAMA BOB'S"!!</p>

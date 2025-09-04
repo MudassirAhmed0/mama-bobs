@@ -4,29 +4,32 @@ import React from "react";
 
 const Cta = () => {
   return (
-    <div data-aos="fade" className="myContainer md:my-12 my-9 ">
-      <div className="relative flex flex-row justify-between items-center bg-black sm:rounded-r-full bg-black">
+    <div data-aos="fade" className="myContainer md:my-12 my-9">
+      <div className="relative flex flex-row justify-between items-center bg-black sm:rounded-r-full p-5 pr-0">
         <LogoBackground />
-        <div className="-mt-12 sm:-mt-0 w-8/12 sm:w-7/12 ml-6 md:ml-12 flex-col flex justify-start items-start relative z-[2]">
+
+        <div className="flex-col flex justify-start items-start relative z-[2] w-full lg:w-[70%]">
           <div>
             <p className="text-3xl lg:text-4xl uppercase font-semibold leading-9 lg:leading-10 text-white">
-              will be IN PRINT BEFORE YOU CAN SAY "MAMA BOB'S"!!
+              GIVE US YOUR IDEAS, INSPIRATIONS, STORY'S, QUOTES, JOKE'S AND
+              DREAM'S AND THE CREME DE LA CREME WILL BE IN PRINT BEFORE YOU CAN
+              SAY "MAMA BOB'S"!!
             </p>
-            <div className="flex flex-col gap-6 mt-6">
-              <Link href={"/"} target="_blank" className=" text-white">
-                54709 Willms Station <br /> Suite 350, Washington, USA
+            <div className="flex flex-col mt-3">
+              <Link href={"tel:(415) 555-0132"} className=" text-white">
+                Tel: (415) 555-0132
               </Link>
-              <div className="flex flex-col">
-                <Link href={"tel:(415) 555-0132"} className=" text-white">
-                  Tel: (415) 555-0132
-                </Link>
-                <Link
-                  href={"mailto:admin@mamabobs.com"}
-                  className=" text-white"
-                >
-                  Email: admin@mamabobs.com
-                </Link>
-              </div>
+              <Link href={"mailto:admin@mamabobs.com"} className=" text-white">
+                Email: admin@mamabobs.com
+              </Link>
+              <Link
+                href="https://maps.google.com/?q=P.O.+Box+1234,+New+York,+NY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white"
+              >
+                P.O. Box 1234, New York, NY
+              </Link>
             </div>
           </div>
           {/* <div className="mt-12 md:mt-20 lg:mt-16">
@@ -36,7 +39,7 @@ const Cta = () => {
           </div> */}
         </div>
 
-        <div>
+        <div className="hidden lg:block">
           <img
             className="hidden lg:block relative z-1"
             src="https://i.ibb.co/mN8VbTN/Photo.png"
